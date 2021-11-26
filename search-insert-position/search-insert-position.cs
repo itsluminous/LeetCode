@@ -11,7 +11,7 @@ public class Solution {
 }
 
 // Accepted
-public class Solution {
+public class Solution1 {
     public int SearchInsert(int[] nums, int target) {
         var lo = 0;
         var hi = nums.Length -1;
