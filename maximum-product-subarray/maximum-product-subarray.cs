@@ -29,7 +29,7 @@ public class Solution1 {
         
         for(var i=0; i<n; i++){
             if(nums[i] == 0){
-                max = Math.Max(negProduct, posProduct);
+                max = Math.Max(max, posProduct);
                 negProduct = 0;
                 posProduct = 0;
             }
