@@ -2,7 +2,6 @@
 // To do this we need to know a starting point. If there is any path which does not end at starting point, we pick that
 // Else we pick any random path which starts at any random point
 // After this we perform DFS using Hierholzer's Algorithm
-// Hierholzer's Algorithm Explaination - https://www.youtube.com/watch?v=WYqsg5dziaQ
 
 public class Solution {
     Dictionary<int, List<int>> adjList = new Dictionary<int, List<int>>();
