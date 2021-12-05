@@ -34,18 +34,19 @@ public class Solution {
     
     private bool FindPath(TreeNode root, int start, int dest, StringBuilder path){
         if(root == null) return false;
-        if(root.val == start){
-            startPath = path.ToString();
-            if(startPath != null && destPath != null) return true;
-        }
-        if(root.val == dest){
-            destPath = path.ToString();
-            if(startPath != null && destPath != null) return true;
-        }
+        
+        if(root.val == start) startPath = path.ToString();
+        if(root.val == dest) destPath = path.ToString();
+        
+        // if we found both start and destination nodes. stop searching
+        if(startPath != null && destPath != null) return true;
+        
+        // search in left subtree
         path.Append("L");
         if(FindPath(root.left, start, dest, path)) return true;
         path.Length--;
         
+        // search in right subtree
         path.Append("R");
         if(FindPath(root.right, start, dest, path)) return true;
         path.Length--;
