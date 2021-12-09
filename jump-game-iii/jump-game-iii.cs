@@ -1,4 +1,17 @@
+// Accepted - without using extra space
 public class Solution {
+    public bool CanReach(int[] arr, int i) {
+        if(i < 0 || i >= arr.Length || arr[i] < 0) return false;
+        if(arr[i] == 0) return true;
+        
+        arr[i] = -arr[i];   // marking index i as visited
+        return CanReach(arr, i+arr[i]) || CanReach(arr, i-arr[i]);
+    }
+}
+
+
+// Accepted - using O(n) extra space
+public class Solution1 {
     public bool CanReach(int[] arr, int start) {
         var n = arr.Length;
         var visited = new bool[n];
