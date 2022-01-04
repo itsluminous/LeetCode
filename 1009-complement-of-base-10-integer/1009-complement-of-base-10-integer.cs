@@ -14,6 +14,12 @@ public class Solution {
     }
     
     private int GetMask(int num){
+        var mask = 1;
+        while(mask < num)
+            mask = (mask<<1)+1;
+        return mask;
+        
+        /* alternate approach
         // Copy the highest 1-bit onto all the lower bits
         var mask = num;     // Eg. num = 0000100000
         mask |= mask >> 1;  // 0000110000
@@ -23,5 +29,6 @@ public class Solution {
         mask |= mask >> 16; // 0000111111
         
         return mask;
+        */
     }
 }
