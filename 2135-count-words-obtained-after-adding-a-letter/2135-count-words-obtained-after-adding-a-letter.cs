@@ -11,6 +11,7 @@ public class Solution {
         foreach(var word in targetWords){
             var sorted = String.Concat(word.OrderBy(c => c));   // sort characters
             var len = sorted.Length;
+            // now one by one remove characters from the target word and see if it exists in hash set
             for(var i=0; i<len; i++){
                 var newWord = sorted.Substring(0,i) + sorted.Substring(i+1,len-i-1);
                 if(set.Contains(newWord)){
