@@ -15,7 +15,7 @@ we know that fast pointer has travelled twice that of slow, so
 
 i.e. distance from 0 to meeting point  is same as meeting point to start of cycle
 */
-public class Solution1 {
+public class Solution {
     public ListNode DetectCycle(ListNode head) {
         //base case
         if(head == null || head.next == null) return null;
@@ -38,8 +38,8 @@ public class Solution1 {
     }
 }
 
-// using hash set
-public class Solution {
+// Accepted - using hash set
+public class Solution1 {
     public ListNode DetectCycle(ListNode head) {
         var set = new HashSet<ListNode>();
         var node = head;
