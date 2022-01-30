@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public void Rotate(int[] nums, int k) {
         var n = nums.Length;
         k = k % n;
@@ -15,7 +15,7 @@ public class Solution {
 }
 
 // without using extra space
-public class Solution1 {
+public class Solution {
     public void Rotate(int[] nums, int k) {
         var length = nums.Length;
         k %= length;
