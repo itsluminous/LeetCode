@@ -1,10 +1,9 @@
 public class Solution {
     public int MaximumWealth(int[][] accounts) {
         var max = 0;
-        for(var i=0; i<accounts.Length; i++){
+        foreach(var account in accounts){
             var curr = 0;
-            for(var j=0; j<accounts[0].Length; j++)
-                curr += accounts[i][j];
+            foreach(var money in account) curr += money;
             max = Math.Max(max, curr);
         }
         
