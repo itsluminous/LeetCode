@@ -10,6 +10,7 @@ public class Solution {
         for(var i=0; i<r; i++) pChars[s[i]-'a']--;
         CheckZeroes(pChars, result, l);
         
+        // for each window size, check if it is anagram
         while(r < s.Length){
             pChars[s[r]-'a']--;
             pChars[s[l]-'a']++;
@@ -20,6 +21,7 @@ public class Solution {
         return result;
     }
     
+    // check if all alphabets are fitting in the window
     private void CheckZeroes(int[] pChars, List<int> result, int idx){
         foreach(var val in pChars)
             if(val != 0) return;
