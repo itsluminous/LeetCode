@@ -1,7 +1,9 @@
 public class Solution {
     public int FourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
         var n = nums1.Length;
-        Dictionary<int, int> dict12 = new Dictionary<int, int>(), dict34 = new Dictionary<int, int>();
+        Dictionary<int, int> dict12 = new Dictionary<int, int>();
+        
+        // first we find all possible totals for nums1 and nums2
         for(var i=0; i<n; i++)
             for(var j=0; j<n; j++){
                 var tot = nums1[i] + nums2[j];
@@ -9,19 +11,14 @@ public class Solution {
                 else dict12[tot]++;
             }
         
+        // then we find all possible totals of nums3 and nums4
+        // and we parallelly check if any number in dict can make it 0
+        var zeroes = 0;
         for(var i=0; i<n; i++)
             for(var j=0; j<n; j++){
-                var tot = nums3[i] + nums4[j];
-                if(!dict34.ContainsKey(tot)) dict34[tot] = 1;
-                else dict34[tot]++;
-            }
-        
-        var zeroes = 0;
-        foreach(var d12Key in dict12.Keys)
-            foreach(var d34Key in dict34.Keys){
-                if(d12Key + d34Key == 0){
-                    zeroes += dict12[d12Key]*dict34[d34Key];
-                }
+                var negTot = -1 * (nums3[i] + nums4[j]);
+                if(dict12.ContainsKey(negTot))
+                    zeroes += dict12[negTot];
             }
         
         return zeroes;
