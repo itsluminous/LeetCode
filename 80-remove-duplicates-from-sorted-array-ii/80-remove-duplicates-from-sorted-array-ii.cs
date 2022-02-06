@@ -1,5 +1,17 @@
 public class Solution {
     public int RemoveDuplicates(int[] nums) {
+        var validIdx = 0;
+        foreach(var num in nums){
+            if(validIdx < 2 || num > nums[validIdx-2])
+                nums[validIdx++] = num;
+        }
+        return validIdx;
+    }
+}
+
+// Accepted
+public class Solution1 {
+    public int RemoveDuplicates(int[] nums) {
         if(nums.Length == 1) return 1;
         
         int validIdx = 0, currIdx = 1, n = nums.Length;
