@@ -11,7 +11,16 @@
  *     }
  * }
  */
+
 public class Solution {
+    public int MaxDepth(TreeNode root) {
+        if(root == null) return 0;
+        return 1 + Math.Max(MaxDepth(root.left), MaxDepth(root.right));
+    }
+}
+
+// Accepted - noob solution
+public class Solution1 {
     int max = 0;
     
     public int MaxDepth(TreeNode root) {
