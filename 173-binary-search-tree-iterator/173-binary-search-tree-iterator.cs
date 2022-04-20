@@ -1,9 +1,39 @@
+// Using stack to reduce space complexity
 public class BSTIterator {
+
+    Stack<TreeNode> parents = new Stack<TreeNode>();
+    
+    public BSTIterator(TreeNode root) {
+        while(root != null){
+            parents.Push(root);
+            root = root.left;
+        }
+    }
+    
+    public int Next() {
+        var curr = parents.Pop();
+        // now push all nodes betwee curr, and its parent
+        var node = curr.right;
+        while(node != null){
+            parents.Push(node);
+            node = node.left;
+        }
+        
+        return curr.val;
+    }
+    
+    public bool HasNext() {
+        return parents.Count > 0;
+    }
+}
+
+// Accepted, but uses more space
+public class BSTIterator1 {
 
     List<int> inorder = new List<int>();
     int idx = -1;
     
-    public BSTIterator(TreeNode root) {
+    public BSTIterator1(TreeNode root) {
         TraverseInOrder(root);
     }
     
