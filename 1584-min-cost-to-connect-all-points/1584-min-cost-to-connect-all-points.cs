@@ -1,5 +1,47 @@
-// Kruskal's Algorithm for Min Spanning Tree
+// Prim's algo for Min Spanning Tree
 public class Solution {
+    public int MinCostConnectPoints(int[][] points) {
+        int n = points.Length, mstCost = 0, edgesUsed = 0;
+        var inMST = new bool[n];    // track nodes included in MST
+        var minDist = new int[n];
+        
+        // set all nodes dist as infinity, except first (as it will be dist to self)
+        minDist[0] = 0; // distance from node 0 to 0
+        for(var i=1; i<n; i++) minDist[i] = int.MaxValue;
+        
+        while(edgesUsed < n){
+            var currMinEdge = int.MaxValue;
+            var currNode = -1;
+            
+            // Pick least weight node which is not in MST.
+            for(var node = 0; node < n; node++){
+                if(!inMST[node] && currMinEdge > minDist[node]){
+                    currMinEdge = minDist[node];
+                    currNode = node;
+                }
+            }
+            
+            mstCost += currMinEdge;
+            edgesUsed++;
+            inMST[currNode] = true;
+            
+            // Update distance of adjacent nodes of current node.
+            for(var nextNode = 0; nextNode < n; nextNode++){
+                var dist = Math.Abs(points[currNode][0] - points[nextNode][0]) 
+                         + Math.Abs(points[currNode][1] - points[nextNode][1]);
+                if(!inMST[nextNode] && minDist[nextNode] > dist)
+                    minDist[nextNode] = dist;
+            }
+        }
+        
+        return mstCost;
+    }
+}
+
+
+
+// Accepted - Kruskal's Algorithm for Min Spanning Tree
+public class Solution1 {
     public int MinCostConnectPoints(int[][] points) {
         var n = points.Length;
         
