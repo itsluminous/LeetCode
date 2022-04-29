@@ -26,7 +26,7 @@ public class Solution {
                 var newDist = Math.Max(dist, Math.Abs(heights[row][col] - heights[r][c]));
                 if (minEffort[row,col] > newDist) {
                     minEffort[row,col] = newDist;
-                    pq.Enqueue(new []{minEffort[row,col], row, col}, minEffort[row,col]);
+                    pq.Enqueue(new []{newDist, row, col}, newDist);
                 }
             }
         }
