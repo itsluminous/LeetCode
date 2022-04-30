@@ -15,6 +15,7 @@ public class Solution {
            if(count[i] == n)
                result.Add(i);
         
+        // result will be automatically sorted
         return result;
     }
 }
