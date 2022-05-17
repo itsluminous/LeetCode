@@ -20,7 +20,7 @@ public class Solution {
                         if(newx < 0 || newx == n || newy < 0 || newy == n || grid[newx][newy] == 1)
                             continue;
                         q.Enqueue((newx, newy));
-                        grid[newx][newy] = 1;
+                        grid[newx][newy] = 1;   // mark it as visited
                     }
                 }
             }
