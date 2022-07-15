@@ -1,3 +1,4 @@
+// BFS
 public class Solution {
     public int MaxAreaOfIsland(int[][] grid) {
         int max = 0;
@@ -41,5 +42,32 @@ public class Solution {
         } while (q.Count > 0);
         
         return size;
+    }
+}
+
+// DFS - Accepted
+public class Solution1 {
+    HashSet<string> seen = new HashSet<string>();
+    public int MaxAreaOfIsland(int[][] grid) {
+        var maxArea = 0;
+        var rows = grid.Length;
+        var cols = grid[0].Length;
+        
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                maxArea = Math.Max(maxArea, GetIslandArea(grid, i, j));
+            }
+        }
+        return maxArea;
+    }
+    
+    private int GetIslandArea(int[][] grid, int r, int c){
+        var rows = grid.Length;
+        var cols = grid[0].Length;
+        
+        if(r<0 || r>=rows || c<0 || c>=cols || grid[r][c] == 0 || !seen.Add(r+":"+c)) return 0;
+        return 1 
+            + GetIslandArea(grid, r-1, c) + GetIslandArea(grid, r+1, c) 
+            + GetIslandArea(grid, r, c-1) + GetIslandArea(grid, r, c+1);
     }
 }
