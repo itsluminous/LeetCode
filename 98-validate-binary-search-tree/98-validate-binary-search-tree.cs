@@ -1,6 +1,6 @@
 public class Solution {
     public bool IsValidBST(TreeNode root) {
-        return IsValidBST(root.left, Int64.MinValue, root.val) && IsValidBST(root.right, root.val, Int64.MaxValue);
+        return IsValidBST(root, Int64.MinValue, Int64.MaxValue);
     }
     
     public bool IsValidBST(TreeNode node, long min, long max) {
