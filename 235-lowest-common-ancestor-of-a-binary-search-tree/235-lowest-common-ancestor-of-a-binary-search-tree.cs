@@ -30,6 +30,37 @@ public class Solution {
     }
 }
 
+
+// SOLUTIONS FROM OTHER PEOPLE BELOW :
+
+public class Solution1 {
+    public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        while ((root.val - p.val) * (root.val - q.val) > 0)
+            root = p.val < root.val ? root.left : root.right;
+        return root;
+    }
+}
+
+
+public class Solution2 {
+    public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(p.val > q.val) return Helper(root, q, p);
+        return Helper(root, p, q);
+    }
+    
+    private TreeNode Helper(TreeNode root, TreeNode p, TreeNode q){
+        if(root == null) return null;
+        if(root.val >= p.val && root.val <= q.val) return root;
+        
+        var left = LowestCommonAncestor(root.left, p, q);
+        var right = LowestCommonAncestor(root.right, p, q);
+        if(left == null) return right;
+        if(right == null) return left;
+        if(left.val < right.val) return left;
+        return right;
+    }
+}
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
