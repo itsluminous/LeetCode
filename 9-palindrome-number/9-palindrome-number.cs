@@ -1,4 +1,4 @@
-public class Solution1 {
+public class Solution {
     public bool IsPalindrome(int x) {
         // negative nums & nums ending with 0 can never be palindrome
         if(x < 0 || (x % 10 == 0 && x!= 0)) return false;    
@@ -13,7 +13,8 @@ public class Solution1 {
     }
 }
 
-public class Solution {
+// Accepted : by using string conversion
+public class Solution1 {
     public bool IsPalindrome(int x) {
         // negative nums & nums ending with 0 can never be palindrome
         if(x < 0 || (x % 10 == 0 && x!= 0)) return false;    
