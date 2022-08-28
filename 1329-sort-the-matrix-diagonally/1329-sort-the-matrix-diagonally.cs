@@ -6,9 +6,12 @@ public class Solution {
         int xincr = 0, yincr = 1;
         for(int x=0, y=0; x<m && y<n; x+=xincr, y+=yincr){
             var items = new List<int>();
+            // read diagonal
             for(int i=x, j=y; i<m && j<n; i++, j++)
                 items.Add(mat[i][j]);
+            // sort diagonal
             items.Sort();
+            // update diagonal
             for(int i=x, j=y, idx=0; i<m && j<n; i++, j++, idx++)
                 mat[i][j] = items[idx];
         }
@@ -17,9 +20,12 @@ public class Solution {
         xincr = 1; yincr = 0;
         for(int x=1, y=0; x<m && y<n; x+=xincr, y+=yincr){
             var items = new List<int>();
+            // read diagonal
             for(int i=x, j=y; i<m && j<n; i++, j++)
                 items.Add(mat[i][j]);
+            // sort diagonal
             items.Sort();
+            // update diagonal
             for(int i=x, j=y, idx=0; i<m && j<n; i++, j++, idx++)
                 mat[i][j] = items[idx];
         }
