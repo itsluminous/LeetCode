@@ -11,8 +11,8 @@ public class Solution {
     private int dfs(int d, int k) {
         var mod = 1_000_000_007;
         
-        if (d > k) return 0;
-        if (d == k) return 1;
+        if (d > k) return 0;    // cannot cover more distance than allowed steps
+        if (d == k) return 1;   // only one way to cover distance if we have exact same steps
         
         if (dp[d,k] == 0){
             var movefar = dfs(d + 1, k - 1);
