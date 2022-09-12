@@ -7,11 +7,10 @@ public class Solution {
             while(i <= j && power >= tokens[i]){
                 power -= tokens[i++];
                 currscore++;
-                maxscore = Math.Max(currscore, maxscore);
             }
+            maxscore = Math.Max(currscore, maxscore);
             
-            if(i == j) break;           // we processed full array already
-            if(currscore == 0) break;   // we cannot do any further transactions      
+            if(i == j || currscore == 0) break;   // we processed full array already or we cannot do any further transactions
             
             // now play the j-th token face down to get power and lose a score
             power += tokens[j--];
