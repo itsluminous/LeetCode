@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Remove space in folder names
+.git/hooks/remove_spaces.sh
+
+# Run the update_readme.sh script
+.git/hooks/update_readme.sh
