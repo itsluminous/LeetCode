@@ -239,6 +239,7 @@
 - [606-construct-string-from-binary-tree](606-construct-string-from-binary-tree)
 - [61-rotate-list](61-rotate-list)
 - [62-unique-paths](62-unique-paths)
+- [629-K-Inverse-Pairs-Array](629-K-Inverse-Pairs-Array)
 - [63-unique-paths-ii](63-unique-paths-ii)
 - [630-course-schedule-iii](630-course-schedule-iii)
 - [637-average-of-levels-in-binary-tree](637-average-of-levels-in-binary-tree)

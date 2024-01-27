@@ -12,6 +12,7 @@ for folder in $folders; do
     old_name=$(basename "$folder")
     new_name=$(echo "$old_name" | sed 's/ /-/g' | sed 's/\.-/-/g')
     mv "$parent_path/$old_name" "$parent_path/$new_name"
+    git add "$parent_path/$old_name"
     git add "$parent_path/$new_name"
 done
 
