@@ -10,6 +10,7 @@
 - [1046-last-stone-weight](1046-last-stone-weight)
 - [1048-longest-string-chain](1048-longest-string-chain)
 - [105-construct-binary-tree-from-preorder-and-inorder-traversal](105-construct-binary-tree-from-preorder-and-inorder-traversal)
+- [1074-Number-of-Submatrices-That-Sum-to-Target](1074-Number-of-Submatrices-That-Sum-to-Target)
 - [108-convert-sorted-array-to-binary-search-tree](108-convert-sorted-array-to-binary-search-tree)
 - [1091-shortest-path-in-binary-matrix](1091-shortest-path-in-binary-matrix)
 - [1094-car-pooling](1094-car-pooling)
