@@ -178,6 +178,7 @@
 - [3-longest-substring-without-repeating-characters](3-longest-substring-without-repeating-characters)
 - [30-substring-with-concatenation-of-all-words](30-substring-with-concatenation-of-all-words)
 - [300-longest-increasing-subsequence](300-longest-increasing-subsequence)
+- [3022-Minimize-OR-of-Remaining-Elements-Using-Operations](3022-Minimize-OR-of-Remaining-Elements-Using-Operations)
 - [304-range-sum-query-2d-immutable](304-range-sum-query-2d-immutable)
 - [31-next-permutation](31-next-permutation)
 - [316-remove-duplicate-letters](316-remove-duplicate-letters)
