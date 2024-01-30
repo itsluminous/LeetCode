@@ -60,6 +60,7 @@
 - [1465-maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts](1465-maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts)
 - [148-sort-list](148-sort-list)
 - [1480-running-sum-of-1d-array](1480-running-sum-of-1d-array)
+- [150-Evaluate-Reverse-Polish-Notation](150-Evaluate-Reverse-Polish-Notation)
 - [1510-stone-game-iv](1510-stone-game-iv)
 - [1584-min-cost-to-connect-all-points](1584-min-cost-to-connect-all-points)
 - [160-intersection-of-two-linked-lists](160-intersection-of-two-linked-lists)
