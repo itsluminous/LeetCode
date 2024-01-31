@@ -263,6 +263,7 @@
 - [71-simplify-path](71-simplify-path)
 - [718-maximum-length-of-repeated-subarray](718-maximum-length-of-repeated-subarray)
 - [729-my-calendar-i](729-my-calendar-i)
+- [739-Daily-Temperatures](739-Daily-Temperatures)
 - [74-search-a-2d-matrix](74-search-a-2d-matrix)
 - [740-delete-and-earn](740-delete-and-earn)
 - [743-network-delay-time](743-network-delay-time)
