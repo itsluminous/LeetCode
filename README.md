@@ -177,6 +177,7 @@
 - [289-game-of-life](289-game-of-life)
 - [29-divide-two-integers](29-divide-two-integers)
 - [290-word-pattern](290-word-pattern)
+- [2966-Divide-Array-Into-Arrays-With-Max-Difference](2966-Divide-Array-Into-Arrays-With-Max-Difference)
 - [3-longest-substring-without-repeating-characters](3-longest-substring-without-repeating-characters)
 - [30-substring-with-concatenation-of-all-words](30-substring-with-concatenation-of-all-words)
 - [300-longest-increasing-subsequence](300-longest-increasing-subsequence)
