@@ -7,6 +7,7 @@
 - [1029-two-city-scheduling](1029-two-city-scheduling)
 - [104-maximum-depth-of-binary-tree](104-maximum-depth-of-binary-tree)
 - [1041-robot-bounded-in-circle](1041-robot-bounded-in-circle)
+- [1043-Partition-Array-for-Maximum-Sum](1043-Partition-Array-for-Maximum-Sum)
 - [1046-last-stone-weight](1046-last-stone-weight)
 - [1048-longest-string-chain](1048-longest-string-chain)
 - [105-construct-binary-tree-from-preorder-and-inorder-traversal](105-construct-binary-tree-from-preorder-and-inorder-traversal)
