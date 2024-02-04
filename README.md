@@ -271,6 +271,7 @@
 - [743-network-delay-time](743-network-delay-time)
 - [745-prefix-and-suffix-search](745-prefix-and-suffix-search)
 - [746-min-cost-climbing-stairs](746-min-cost-climbing-stairs)
+- [76-Minimum-Window-Substring](76-Minimum-Window-Substring)
 - [763-partition-labels](763-partition-labels)
 - [78-subsets](78-subsets)
 - [785-is-graph-bipartite](785-is-graph-bipartite)
