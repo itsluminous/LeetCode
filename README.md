@@ -97,6 +97,7 @@
 - [20-valid-parentheses](20-valid-parentheses)
 - [200-number-of-islands](200-number-of-islands)
 - [2007-find-original-array-from-doubled-array](2007-find-original-array-from-doubled-array)
+- [204-Count-Primes](204-Count-Primes)
 - [21-merge-two-sorted-lists](21-merge-two-sorted-lists)
 - [211-design-add-and-search-words-data-structure](211-design-add-and-search-words-data-structure)
 - [2125-Number-of-Laser-Beams-in-a-Bank](2125-Number-of-Laser-Beams-in-a-Bank)
