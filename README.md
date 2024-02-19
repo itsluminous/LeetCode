@@ -156,6 +156,7 @@
 - [2289-steps-to-make-array-non-decreasing](2289-steps-to-make-array-non-decreasing)
 - [23-merge-k-sorted-lists](23-merge-k-sorted-lists)
 - [230-kth-smallest-element-in-a-bst](230-kth-smallest-element-in-a-bst)
+- [231-Power-of-Two](231-Power-of-Two)
 - [232-Implement-Queue-using-Stacks](232-Implement-Queue-using-Stacks)
 - [2325-decode-the-message](2325-decode-the-message)
 - [2326-spiral-matrix-iv](2326-spiral-matrix-iv)
