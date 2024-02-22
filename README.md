@@ -325,6 +325,7 @@
 - [987-vertical-order-traversal-of-a-binary-tree](987-vertical-order-traversal-of-a-binary-tree)
 - [99-recover-binary-search-tree](99-recover-binary-search-tree)
 - [991-broken-calculator](991-broken-calculator)
+- [997-Find-the-Town-Judge](997-Find-the-Town-Judge)
 - [a-number-after-a-double-reversal](a-number-after-a-double-reversal)
 - [accounts-merge](accounts-merge)
 - [adding-spaces-to-a-string](adding-spaces-to-a-string)
