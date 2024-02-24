@@ -99,6 +99,7 @@
 - [2007-find-original-array-from-doubled-array](2007-find-original-array-from-doubled-array)
 - [201-Bitwise-AND-of-Numbers-Range](201-Bitwise-AND-of-Numbers-Range)
 - [204-Count-Primes](204-Count-Primes)
+- [2092-Find-All-People-With-Secret](2092-Find-All-People-With-Secret)
 - [21-merge-two-sorted-lists](21-merge-two-sorted-lists)
 - [211-design-add-and-search-words-data-structure](211-design-add-and-search-words-data-structure)
 - [2125-Number-of-Laser-Beams-in-a-Bank](2125-Number-of-Laser-Beams-in-a-Bank)
