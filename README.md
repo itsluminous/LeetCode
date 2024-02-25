@@ -177,6 +177,7 @@
 - [258-add-digits](258-add-digits)
 - [2610-Convert-an-Array-Into-a-2D-Array-With-Conditions](2610-Convert-an-Array-Into-a-2D-Array-With-Conditions)
 - [268-missing-number](268-missing-number)
+- [2709-Greatest-Common-Divisor-Traversal](2709-Greatest-Common-Divisor-Traversal)
 - [279-Perfect-Squares](279-Perfect-Squares)
 - [284-peeking-iterator](284-peeking-iterator)
 - [287-find-the-duplicate-number](287-find-the-duplicate-number)
