@@ -1,4 +1,5 @@
 # This repo has C# Solution for following LeetCode problems :
+- [100-Same-Tree](100-Same-Tree)
 - [1007-minimum-domino-rotations-for-equal-row](1007-minimum-domino-rotations-for-equal-row)
 - [1009-complement-of-base-10-integer](1009-complement-of-base-10-integer)
 - [102-binary-tree-level-order-traversal](102-binary-tree-level-order-traversal)
