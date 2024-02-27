@@ -246,6 +246,7 @@
 - [532-k-diff-pairs-in-an-array](532-k-diff-pairs-in-an-array)
 - [535-encode-and-decode-tinyurl](535-encode-and-decode-tinyurl)
 - [538-convert-bst-to-greater-tree](538-convert-bst-to-greater-tree)
+- [543-Diameter-of-Binary-Tree](543-Diameter-of-Binary-Tree)
 - [557-reverse-words-in-a-string-iii](557-reverse-words-in-a-string-iii)
 - [560-subarray-sum-equals-k](560-subarray-sum-equals-k)
 - [567-permutation-in-string](567-permutation-in-string)
