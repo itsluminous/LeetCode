@@ -182,6 +182,7 @@
 - [2709-Greatest-Common-Divisor-Traversal](2709-Greatest-Common-Divisor-Traversal)
 - [279-Perfect-Squares](279-Perfect-Squares)
 - [284-peeking-iterator](284-peeking-iterator)
+- [2864-Maximum-Odd-Binary-Number](2864-Maximum-Odd-Binary-Number)
 - [287-find-the-duplicate-number](287-find-the-duplicate-number)
 - [2870-Minimum-Number-of-Operations-to-Make-Array-Empty](2870-Minimum-Number-of-Operations-to-Make-Array-Empty)
 - [289-game-of-life](289-game-of-life)
