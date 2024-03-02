@@ -328,6 +328,7 @@
 - [967-numbers-with-same-consecutive-differences](967-numbers-with-same-consecutive-differences)
 - [968-binary-tree-cameras](968-binary-tree-cameras)
 - [97-interleaving-string](97-interleaving-string)
+- [977-Squares-of-a-Sorted-Array](977-Squares-of-a-Sorted-Array)
 - [98-validate-binary-search-tree](98-validate-binary-search-tree)
 - [985-sum-of-even-numbers-after-queries](985-sum-of-even-numbers-after-queries)
 - [987-vertical-order-traversal-of-a-binary-tree](987-vertical-order-traversal-of-a-binary-tree)
