@@ -16,6 +16,7 @@
 - [108-convert-sorted-array-to-binary-search-tree](108-convert-sorted-array-to-binary-search-tree)
 - [1091-shortest-path-in-binary-matrix](1091-shortest-path-in-binary-matrix)
 - [1094-car-pooling](1094-car-pooling)
+- [1095-Find-in-Mountain-Array](1095-Find-in-Mountain-Array)
 - [11-container-with-most-water](11-container-with-most-water)
 - [114-flatten-binary-tree-to-linked-list](114-flatten-binary-tree-to-linked-list)
 - [117-populating-next-right-pointers-in-each-node-ii](117-populating-next-right-pointers-in-each-node-ii)
