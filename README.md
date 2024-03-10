@@ -213,6 +213,7 @@
 - [342-power-of-four](342-power-of-four)
 - [344-reverse-string](344-reverse-string)
 - [347-top-k-frequent-elements](347-top-k-frequent-elements)
+- [349-Intersection-of-Two-Arrays](349-Intersection-of-Two-Arrays)
 - [354-russian-doll-envelopes](354-russian-doll-envelopes)
 - [363-max-sum-of-rectangle-no-larger-than-k](363-max-sum-of-rectangle-no-larger-than-k)
 - [368-Largest-Divisible-Subset](368-Largest-Divisible-Subset)
