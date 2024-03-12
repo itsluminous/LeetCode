@@ -298,6 +298,7 @@
 - [78-subsets](78-subsets)
 - [785-is-graph-bipartite](785-is-graph-bipartite)
 - [787-Cheapest-Flights-Within-K-Stops](787-Cheapest-Flights-Within-K-Stops)
+- [791-Custom-Sort-String](791-Custom-Sort-String)
 - [799-champagne-tower](799-champagne-tower)
 - [8-string-to-integer-atoi](8-string-to-integer-atoi)
 - [80-remove-duplicates-from-sorted-array-ii](80-remove-duplicates-from-sorted-array-ii)
