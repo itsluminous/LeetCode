@@ -20,6 +20,7 @@
 - [11-container-with-most-water](11-container-with-most-water)
 - [114-flatten-binary-tree-to-linked-list](114-flatten-binary-tree-to-linked-list)
 - [117-populating-next-right-pointers-in-each-node-ii](117-populating-next-right-pointers-in-each-node-ii)
+- [1171-Remove-Zero-Sum-Consecutive-Nodes-from-Linked-List](1171-Remove-Zero-Sum-Consecutive-Nodes-from-Linked-List)
 - [1192-critical-connections-in-a-network](1192-critical-connections-in-a-network)
 - [120-triangle](120-triangle)
 - [1202-smallest-string-with-swaps](1202-smallest-string-with-swaps)
