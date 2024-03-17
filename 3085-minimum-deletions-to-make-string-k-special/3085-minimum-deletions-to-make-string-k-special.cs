@@ -9,10 +9,10 @@ public class Solution {
         var freq = dict.Values.ToList();
         freq.Sort();
         
-        return Convert.ToInt32(Delete(freq, 0, freq.Count-1, k));
+        return Delete(freq, 0, freq.Count-1, k);
     }
     
-    private long Delete(List<int> freq, int lIdx, int rIdx, int k){
+    private int Delete(List<int> freq, int lIdx, int rIdx, int k){
         var (l,r) = (freq[lIdx], freq[rIdx]);
         if(r-l <= k) return 0;
 
