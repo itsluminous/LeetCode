@@ -13,12 +13,11 @@ public class Solution {
     }
     
     private int Delete(List<int> freq, int lIdx, int rIdx, int k){
-        var (l,r) = (freq[lIdx], freq[rIdx]);
-        if(r-l <= k) return 0;
+        var (lVal,rVal) = (freq[lIdx], freq[rIdx]);
+        if(rVal-lVal <= k) return 0;
 
-        var leftDelete = l + Delete(freq, lIdx+1, rIdx, k);
-        var rightDelete = (r-l-k) + Delete(freq, lIdx, rIdx-1, k);
-        var min = Math.Min(leftDelete, rightDelete);
-        return min;
+        var leftDelete = lVal + Delete(freq, lIdx+1, rIdx, k);
+        var rightDelete = (rVal-lVal-k) + Delete(freq, lIdx, rIdx-1, k);
+        return Math.Min(leftDelete, rightDelete);
     }
 }
