@@ -4,10 +4,11 @@ public class Solution {
         int maxDepth = 0, openBrackets = 0;
         
         foreach(var ch in s){
-            if(ch == '(') openBrackets++;
+            if(ch == '(') {
+                openBrackets++;
+                maxDepth = Math.Max(maxDepth, openBrackets);
+            }
             else if(ch == ')') openBrackets--;
-
-            maxDepth = Math.Max(maxDepth, openBrackets);
         }
 
         return maxDepth;
