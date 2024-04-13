@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/count-artifacts-that-can-be-extracted/">2201. Count Artifacts That Can Be Extracted</a></h2><h3>Medium</h3><hr><div><p>There is an <code>n x n</code> <strong>0-indexed</strong> grid with some artifacts buried in it. You are given the integer <code>n</code> and a <strong>0-indexed </strong>2D integer array <code>artifacts</code> describing the positions of the rectangular artifacts where <code>artifacts[i] = [r1<sub>i</sub>, c1<sub>i</sub>, r2<sub>i</sub>, c2<sub>i</sub>]</code> denotes that the <code>i<sup>th</sup></code> artifact is buried in the subgrid where:</p>
+<h2><a href="https://leetcode.com/problems/count-artifacts-that-can-be-extracted/">2201. Count Artifacts That Can Be Extracted</a></h2><h3>Medium</h3><hr><p>There is an <code>n x n</code> <strong>0-indexed</strong> grid with some artifacts buried in it. You are given the integer <code>n</code> and a <strong>0-indexed </strong>2D integer array <code>artifacts</code> describing the positions of the rectangular artifacts where <code>artifacts[i] = [r1<sub>i</sub>, c1<sub>i</sub>, r2<sub>i</sub>, c2<sub>i</sub>]</code> denotes that the <code>i<sup>th</sup></code> artifact is buried in the subgrid where:</p>
 
 <ul>
 	<li><code>(r1<sub>i</sub>, c1<sub>i</sub>)</code> is the coordinate of the <strong>top-left</strong> cell of the <code>i<sup>th</sup></code> artifact and</li>
@@ -18,22 +18,24 @@
 </ul>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/09/16/untitled-diagram.jpg" style="width: 216px; height: 216px;">
-<pre><strong>Input:</strong> n = 2, artifacts = [[0,0,0,0],[0,1,1,1]], dig = [[0,0],[0,1]]
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/09/16/untitled-diagram.jpg" style="width: 216px; height: 216px;" />
+<pre>
+<strong>Input:</strong> n = 2, artifacts = [[0,0,0,0],[0,1,1,1]], dig = [[0,0],[0,1]]
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> 
-The different colors represent different artifacts. Excavated cells are labeled with a 'D' in the grid.
+The different colors represent different artifacts. Excavated cells are labeled with a &#39;D&#39; in the grid.
 There is 1 artifact that can be extracted, namely the red artifact.
 The blue artifact has one part in cell (1,1) which remains uncovered, so we cannot extract it.
 Thus, we return 1.
 </pre>
 
-<p><strong>Example 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/09/16/untitled-diagram-1.jpg" style="width: 216px; height: 216px;">
-<pre><strong>Input:</strong> n = 2, artifacts = [[0,0,0,0],[0,1,1,1]], dig = [[0,0],[0,1],[1,1]]
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2019/09/16/untitled-diagram-1.jpg" style="width: 216px; height: 216px;" />
+<pre>
+<strong>Input:</strong> n = 2, artifacts = [[0,0,0,0],[0,1,1,1]], dig = [[0,0],[0,1],[1,1]]
 <strong>Output:</strong> 2
-<strong>Explanation:</strong> Both the red and blue artifacts have all parts uncovered (labeled with a 'D') and can be extracted, so we return 2. 
+<strong>Explanation:</strong> Both the red and blue artifacts have all parts uncovered (labeled with a &#39;D&#39;) and can be extracted, so we return 2. 
 </pre>
 
 <p>&nbsp;</p>
@@ -51,4 +53,3 @@ Thus, we return 1.
 	<li>The number of cells covered by an artifact is <strong>at most</strong> <code>4</code>.</li>
 	<li>The entries of <code>dig</code> are unique.</li>
 </ul>
-</div>
