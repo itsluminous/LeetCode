@@ -13,7 +13,7 @@ public class Solution {
                 if(matrix[i][j] == '0')
                     dp[j+1] = 0;
                 else{
-                    // Minimum of      left diagonal,     left val, above val + 1
+                    // min of diagonal-up, left, up
                     dp[j+1] = Math.Min(diagLeftVal, Math.Min(dp[j], dp[j+1])) + 1;
                     max = Math.Max(max, dp[j+1]);
                 }
@@ -37,6 +37,7 @@ public class Solution1 {
         for(int i=1; i<=m; i++){
             for(int j=1; j<=n; j++){
                 if(matrix[i-1][j-1] == '1')
+                    // min of diagonal-up, left, up
                     dp[i][j] = 1 + Math.Min(Math.Min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1]);
                 if(dp[i][j] > max) max = dp[i][j];
             }
