@@ -3,7 +3,7 @@ public class Solution {
     private Dictionary<(int, int, int), int> dp = new Dictionary<(int, int, int), int>();
     int allBitsSet = (1 << 30) - 1;
     int n, m;
-    int maxVal = (int)(1e9);
+    int maxVal = (int)1e9;
 
     public int MinimumValueSum(int[] nums, int[] andValues) {
         (n, m) = (nums.Length, andValues.Length);
