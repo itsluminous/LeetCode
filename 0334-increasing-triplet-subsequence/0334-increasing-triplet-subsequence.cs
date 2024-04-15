@@ -1,6 +1,22 @@
 public class Solution {
     public bool IncreasingTriplet(int[] nums) {
         var n = nums.Length;
+        int first = int.MaxValue, second = int.MaxValue;
+
+        foreach(var num in nums){
+            if(num <= first) first = num;           // first element of sequence found
+            else if(num <= second) second = num;    // second element of sequence found
+            else return true;                       // third element of sequence found
+        }
+
+        return false;
+    }
+}
+
+// Accepted - using additional space
+public class SolutionExtraSpace {
+    public bool IncreasingTriplet(int[] nums) {
+        var n = nums.Length;
         var smallest = new int[n];
 
         var curr = nums[0];
