@@ -7,10 +7,8 @@ class Solution:
             if num in dict:
                 ops +=1
                 dict[num] -=1
-
                 if dict[num] == 0: del dict[num]
-            else:
-                dict[k - num] +=1
+            else: dict[k - num] +=1
         return ops
 
 # Accepted, using no space - O(NlogN)
@@ -22,9 +20,7 @@ class SolutionSort:
         while l < r:
             sum = nums[l] + nums[r]
             if sum == k:
-                ops += 1
-                l += 1
-                r -= 1
+                ops, l, r = ops+1, l+1, r-1
             elif sum < k: l += 1
             else: r -= 1
         return ops
