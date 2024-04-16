@@ -1,5 +1,13 @@
-# O(n) - using extra space
+# O(n) - using counter
 class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        counter, ops = Counter(nums), 0
+        for num in counter:
+            ops += min(counter[num], counter[k-num]);
+        return ops // 2
+
+# O(n) - using extra space
+class SolutionDict:
     def maxOperations(self, nums: List[int], k: int) -> int:
         dict = defaultdict(int)
         ops = 0
