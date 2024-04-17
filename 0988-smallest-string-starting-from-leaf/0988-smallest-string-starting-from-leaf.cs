@@ -1,26 +1,13 @@
 public class Solution {
-    public string SmallestFromLeaf(TreeNode root) {
-        return SmallestFromLeaf(root, new List<int>());
-    }
+    public string SmallestFromLeaf(TreeNode root, string path = "") {
+        path = (char)('a' + root.val) + path;
+        if(root.left == null && root.right == null) return path;
+        if(root.left == null) return SmallestFromLeaf(root.right, path);
+        if(root.right == null) return SmallestFromLeaf(root.left, path);
 
-    public string SmallestFromLeaf(TreeNode root, List<int> lineage) {
-        lineage.Insert(0, root.val);
-
-        var ans = string.Empty;
-        if(root.left == null && root.right == null)
-            ans = ListToString(lineage);
-        else if(root.left == null) 
-            ans = SmallestFromLeaf(root.right, lineage);
-        else if(root.right == null) 
-            ans = SmallestFromLeaf(root.left, lineage);
-        else{
-            var left = SmallestFromLeaf(root.left, lineage);
-            var right = SmallestFromLeaf(root.right, lineage);
-            ans = SmallerString(left, right);
-        }
-        
-        lineage.RemoveAt(0);
-        return ans;
+        var left = SmallestFromLeaf(root.left, path);
+        var right = SmallestFromLeaf(root.right, path);
+        return SmallerString(left, right);
     }
 
     private string SmallerString(string str1, string str2){
@@ -36,15 +23,5 @@ public class Solution {
 
         if(i == str1.Length) return str1;
         return str2;
-    }
-
-    private string ListToString(List<int> nums){
-        var sb = new StringBuilder();
-        foreach(var num in nums){
-            var ch = (char)(97 + num);
-            sb.Append(ch);
-        }
-           
-        return sb.ToString();
     }
 }
