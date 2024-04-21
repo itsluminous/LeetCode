@@ -1,3 +1,5 @@
+// use Dijkstra's algorithm to find smallest weight to reach each node
+// after that, start from node n-1 and try to reach node 0, while following shortest path
 public class Solution {
     public bool[] FindAnswer(int n, int[][] edges) {
         var graph = EdgesToGraph(n, edges);
