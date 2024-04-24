@@ -1,41 +1,49 @@
 public class Solution {
-    TrieNode root;
-    
     public IList<IList<string>> SuggestedProducts(string[] products, string searchWord) {
-        root = new TrieNode();
-        CreateTrie(products);
-        
-        var result = new List<IList<string>>();
-        var empty = new List<string>();
-        foreach(var ch in searchWord){
-            var idx = ch-'a';
-            if(root != null) root = root.next[idx];
-                
-            if(root == null)  // no product matches the prefix
-                result.Add(empty);
-            else
-                result.Add(root.suggestion);
-        }
-        return result;
-    }
-    
-    private void CreateTrie(string[] words) {
-        foreach(var word in words){
-            var node = root;
-            foreach(var ch in word){
-                var idx = ch-'a';
-                if(node.next[idx] == null) 
-                    node.next[idx] = new TrieNode();
-                node = node.next[idx];
-                node.suggestion.Add(word);
-                // always keep only 3 suggestions in list
-                node.suggestion = node.suggestion.OrderBy(x => x).Take(3).ToList();
-            }
-        }
+        var trie = new Trie();
+        trie.Build(products);
+        return trie.Search(searchWord);
     }
 }
 
-public class TrieNode{
-    public TrieNode[] next = new TrieNode[26];
-    public List<string> suggestion = new List<string>();
+public class Trie{
+    List<string> suggestions;
+    Trie[] next;
+
+    public Trie(){
+        suggestions = new List<string>();
+        next = new Trie[26];
+    }
+
+    public void AddSuggestion(string word){
+        suggestions.Add(word);
+        suggestions = suggestions.OrderBy(w => w).Take(3).ToList();
+    }
+
+    public void Build(string[] words){
+        foreach(var word in words){
+            var curr = next;
+            foreach(var ch in word){
+                if(curr[ch-'a'] == null)  curr[ch-'a'] = new Trie();
+                curr[ch-'a'].AddSuggestion(word);
+                curr = curr[ch-'a'].next;
+            }
+        }
+    }
+
+    public IList<IList<string>> Search(string word){
+        var result = new List<IList<string>>();
+        var curr = next;
+        foreach(var ch in word){
+            if(curr == null || curr[ch-'a'] == null){
+                result.Add([]);
+                curr = null;    // mark it so that now onwards no substring will be checked
+                continue;
+            }
+            result.Add(curr[ch-'a'].suggestions);
+            curr = curr[ch-'a'].next;
+        }
+
+        return result;
+    }
 }
