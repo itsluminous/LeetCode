@@ -5,7 +5,7 @@ public class Solution {
 
         for(var i=3; i<=n; i++){
             var num = t.Sum();
-            (t[0], t[1], t[2]) = (t[1], t[2], num);
+            t = [t[1], t[2], num];
         }
 
         return t[2];
