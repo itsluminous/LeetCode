@@ -2,12 +2,7 @@ public class Solution {
     public bool LeafSimilar(TreeNode root1, TreeNode root2) {
         var nodes1 = GetLeafNodes(root1);
         var nodes2 = GetLeafNodes(root2);
-
-        if(nodes1.Count != nodes2.Count) return false;
-        for(var i=0; i<nodes1.Count; i++)
-            if(nodes1[i] != nodes2[i]) return false;
-        
-        return true;
+        return nodes1.SequenceEqual(nodes2);
     }
 
     public List<int> GetLeafNodes(TreeNode root) {
