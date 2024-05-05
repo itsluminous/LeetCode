@@ -1,8 +1,9 @@
 class Solution:
     def deleteNode(self, node):
-        node.val = node.next.val
-        if node.next.next: self.deleteNode(node.next)
-        else: node.next = None
+        temp = node.next
+        node.val = temp.val
+        node.next = temp.next
+        temp = None
 
 # Definition for singly-linked list.
 # class ListNode:
