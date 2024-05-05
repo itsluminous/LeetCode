@@ -1,10 +1,8 @@
 func deleteNode(node *ListNode) {
-    node.Val = node.Next.Val
-    if node.Next.Next == nil{
-        node.Next = nil
-    } else {
-        deleteNode(node.Next)
-    }
+    temp := node.Next
+    node.Val = temp.Val
+    node.Next = temp.Next
+    temp = nil
 }
 
 /**
