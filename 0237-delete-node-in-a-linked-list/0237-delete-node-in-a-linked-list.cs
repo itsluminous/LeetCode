@@ -1,8 +1,8 @@
 public class Solution {
     public void DeleteNode(ListNode node) {
-        node.val = node.next.val;
-        if(node.next.next == null) node.next = null;
-        else DeleteNode(node.next);
+        var temp = node.next;
+        node.val = temp.val;
+        node.next = temp.next;
     }
 }
 
