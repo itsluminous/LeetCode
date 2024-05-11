@@ -14,8 +14,8 @@ public class Solution {
     public int MinDistance(string word1, string word2, int w1, int w2) {
         int w1len = word1.Length, w2len = word2.Length;
         
-        if(w1 == w1len) return  w2len-w2;
-        if(w2 == w2len) return  w1len-w1;
+        if(w1 == w1len) return  w2len-w2;   // all remaining chars will have to be inserted
+        if(w2 == w2len) return  w1len-w1;   // all extra chars will have to be deleted
 
         if(dp[w1,w2] != -1) return dp[w1,w2];
 
