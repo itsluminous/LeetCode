@@ -1,4 +1,4 @@
-// TLE - using backtracking
+// using backtracking with DP
 public class Solution {
     int visited = 0;
     HashSet<int>[] seen;  // track if this bitmask has been seen or not (for given k)
