@@ -5,11 +5,13 @@ class Solution:
 
         for i in range(self.m):
             for j in range(self.n):
-                if self.isValid(grid, i, j): self.backtrack(grid, 0, i, j)
+                self.backtrack(grid, 0, i, j)
         
         return self.maxGold
 
     def backtrack(self, grid: List[List[int]], gold: int, x: int, y: int):
+        if not self.isValid(grid, x, y): return
+
         # check if this is the max gold
         gold += grid[x][y]
         self.maxGold = max(self.maxGold, gold)
@@ -19,10 +21,10 @@ class Solution:
         grid[x][y] = 0
 
         # now try to go in all four directions
-        if self.isValid(grid, x+1, y): self.backtrack(grid, gold, x+1, y)
-        if self.isValid(grid, x-1, y): self.backtrack(grid, gold, x-1, y)
-        if self.isValid(grid, x, y+1): self.backtrack(grid, gold, x, y+1)
-        if self.isValid(grid, x, y-1): self.backtrack(grid, gold, x, y-1)
+        self.backtrack(grid, gold, x+1, y)
+        self.backtrack(grid, gold, x-1, y)
+        self.backtrack(grid, gold, x, y+1)
+        self.backtrack(grid, gold, x, y-1)
 
         # revert changes
         grid[x][y] = val
