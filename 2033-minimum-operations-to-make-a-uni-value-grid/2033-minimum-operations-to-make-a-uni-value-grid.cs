@@ -10,7 +10,7 @@ public class Solution {
 
         // find median using quick select. all numbers will be converted to this value
         var mid = (m*n)/2;
-        var median = GetMedian(nums, mid+1);
+        var median = GetMedianSort(nums, mid+1);
 
         // try to convert every number to median
         var ops = 0;
@@ -42,6 +42,7 @@ public class Solution {
         return mid[0];  // all items in mid will have same value
     }
 
+    // to find median by sorting array - slower
     private int GetMedianSort(List<int> nums, int idx){
         nums.Sort();
         return nums[idx-1];
