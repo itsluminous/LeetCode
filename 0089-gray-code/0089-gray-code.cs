@@ -20,3 +20,18 @@ public class Solution {
         return ans;
     }
 }
+
+// Accepted - difficult to think in interview
+public class SolutionDifficult {
+    public IList<int> GrayCode(int n) {
+        var len = 1 << n;
+        var ans = new List<int>();
+
+        for(var i=0; i<len; i++){
+            var rightShift = i >> 1;    // basically i/2, so that when we do xor, then only one bit is set 
+            ans.Add(i ^ rightShift);
+        }
+
+        return ans;
+    }
+}
