@@ -1,12 +1,11 @@
 class Solution {
     public int rob(int[] nums) {
-        int notRob = 0, rob = nums[0];
-        for(var i=1; i<nums.length; i++){
-            var notRobCurr = Math.max(notRob, rob);
-            rob = notRob + nums[i];
-            notRob = notRobCurr;
+        int doRob = 0, dontRob = 0;
+        for(var i=0; i<nums.length; i++){
+            var currRob = nums[i] + dontRob;
+            dontRob = Math.max(dontRob, doRob);
+            doRob = currRob;
         }
-
-        return Math.max(rob, notRob);
+        return Math.max(doRob, dontRob);
     }
 }
