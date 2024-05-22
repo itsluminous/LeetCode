@@ -1,4 +1,19 @@
 class Solution {
+    public int minPathSum(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        for(var i=0; i<m; i++)
+            for(var j=0; j<n; j++){
+                if(i==0 && j==0) continue;                  // if this is the top-left corner
+                if(i==0) grid[i][j] += grid[i][j-1];        // if this is first row, only way is from left side
+                else if(j==0) grid[i][j] += grid[i-1][j];   // if this is first col, only way is from top  
+                else grid[i][j] += Math.min(grid[i][j-1],grid[i-1][j]);
+            }
+        return grid[m-1][n-1];
+    }
+}
+
+// accepted - using extra space
+class SolutionExtra {
     int[][] dp;
 
     public int minPathSum(int[][] grid) {
