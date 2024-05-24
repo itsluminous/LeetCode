@@ -1,6 +1,7 @@
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         var set = new HashSet<String>(wordList);
+        if(!set.contains(endWord)) return 0;
 
         Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
@@ -16,15 +17,16 @@ class Solution {
         return 0;
     }
 
+    // try to replace every char in startWord one by one
     private boolean transformWord(String startWord, String endWord, Queue<String> queue, HashSet<String> set){
-        // try to replace every char in startWord one by one
         for(var i=0; i<startWord.length(); i++){
             var chars = startWord.toCharArray();
-            for(var j=0; j<26; j++){
-                chars[i] = (char)('a' + j);
+            for(var ch='a'; ch<='z'; ch++){
+                chars[i] = ch;
                 var newWord = new String(chars);
+                if(newWord.equals(endWord)) return true;
+                
                 if(set.contains(newWord)){
-                    if(newWord.equals(endWord)) return true;
                     queue.offer(newWord);
                     set.remove(newWord);
                 }
