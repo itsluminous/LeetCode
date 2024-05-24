@@ -3,19 +3,19 @@ class Solution {
         var freq = new int[26]; // frequency of each char in letters
         for(var ch : letters) freq[ch-'a']++;
 
-        return wordScore(words, freq, score, 0, 0);
+        return wordScore(words, freq, score, 0);
     }
 
-    private int wordScore(String[] words, int[] freq, int[] score, int wIdx, int scoreTillNow){
+    private int wordScore(String[] words, int[] freq, int[] score, int wIdx){
         if(wIdx == words.length) return 0;
         var origFreq = freq.clone();
 
-        var notMakeCurrWord = wordScore(words, freq, score, wIdx+1, scoreTillNow);
+        var notMakeCurrWord = wordScore(words, freq, score, wIdx+1);
         freq = origFreq;
         
         var makeCurrWord = makeWord(words, freq, score, wIdx);
         if(makeCurrWord != -1)
-            makeCurrWord += wordScore(words, freq, score, wIdx+1, scoreTillNow+makeCurrWord);
+            makeCurrWord += wordScore(words, freq, score, wIdx+1);
         freq = origFreq;
         
         var maxScore = Math.max(notMakeCurrWord, makeCurrWord);
