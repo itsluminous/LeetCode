@@ -25,12 +25,8 @@ class Solution {
     // if a word can be formed, then return its score and modify freq array
     private int makeWord(String[] words, int[] freq, int[] score, int wIdx) {
         var totalScore = 0;
-        var origFreq = freq.clone();
         for(var ch : words[wIdx].toCharArray()){
-            if(freq[ch-'a'] == 0){
-                freq = origFreq;
-                return -1;
-            }
+            if(freq[ch-'a'] == 0) return -1;
             freq[ch-'a']--;
             totalScore += score[ch-'a'];
         }
