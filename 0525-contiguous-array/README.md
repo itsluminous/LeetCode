@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/contiguous-array">525. Contiguous Array</a></h2><h3>Medium</h3><hr><p>Given a binary array <code>nums</code>, return <em>the maximum length of a contiguous subarray with an equal number of </em><code>0</code><em> and </em><code>1</code>.</p>
+<h2><a href="https://leetcode.com/problems/contiguous-array/">525. Contiguous Array</a></h2><h3>Medium</h3><hr><p>Given a binary array <code>nums</code>, return <em>the maximum length of a contiguous subarray with an equal number of </em><code>0</code><em> and </em><code>1</code>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
