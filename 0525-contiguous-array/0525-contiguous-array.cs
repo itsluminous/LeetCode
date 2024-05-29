@@ -1,28 +1,35 @@
-// logic : treat 0 as -1
-// every time we encounter 1 or 0, we do +1 or -1 in runningSum
-// if runningSum is repeated, it means we have equal number of 1 & 0 in between
- 
+/*
+O(n) approach using Hashmap/Dictionary
+
+1. Keep a variable called runningSum
+2. Keep a Hashmap called seen which will store index of first time a runningSum was seen
+3. set runningSum[0] = -1. meaning, that without picking any element, running sum is 0.
+4. Start traversing the array
+5. Everytime you encounter a 0, subtract 1, and when you encounter 1, then add 1 to the runningSum
+6. If the current runningSum exists in dictionary, then it means that all zeroes and ones between current index and the first time we saw this runningSum are equal. Update max length if (currIdx - seen.get(runningSum) > max length)
+7. If the current runningSum does not exists in dictionary, then add it with current index as value
+8. At the end of loop, you will have answer
+*/
+
 public class Solution {
     public int FindMaxLength(int[] nums) {
-        int n = nums.Length, max = 0;
+        var n = nums.Length;
+        int runningSum = 0, maxLen = 0;
+        
+        var seen = new Dictionary<int,int>();
+        seen[0] = -1;
 
-        // dict to maintain index of first occurrence of a sum
-        Dictionary<int, int> dict = new Dictionary<int, int>();
-        dict[0] = 0;
+        for (var i = 0; i < n; i++) {
+            runningSum += nums[i] == 0 ? -1 : 1;
 
-        var runningSum = 0;
-        for(var i=0; i<n; i++){
-            if(nums[i] == 0) runningSum--;
-            else runningSum++;
-            
-            if(!dict.ContainsKey(runningSum)){
-                dict[runningSum] = i+1;
-                continue;
+            if(seen.ContainsKey(runningSum)) {
+                var lastSeen = seen[runningSum];
+                maxLen = Math.Max(maxLen, i-lastSeen);
             }
-            var gap = (i - dict[runningSum] + 1);
-            max = Math.Max(max, gap);
+            else
+                seen[runningSum] = i;
         }
-
-        return max;
+        
+        return maxLen;
     }
 }
