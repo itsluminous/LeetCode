@@ -4,7 +4,28 @@
 // i.e.  a ^ b = 0
 // thus,  arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1] ^ arr[j] ^ arr[j + 1] ^ ... ^ arr[k] = 0
 // now this is a prefix problem. We need to find out how many times we have seen a particular xor value
+
+// Complexity : O(n^2)
 class Solution {
+    public int countTriplets(int[] arr) {
+        var n = arr.length;
+        var count = 0;
+
+        for(var left=0; left<n; left++){
+            var currXor = arr[left];
+            for(var right = left + 1; right<n; right++){
+                currXor ^= arr[right];
+                if(currXor == 0)
+                    count += (right-left);
+            }
+        }
+
+        return count;
+    }
+}
+
+// Complexity : O(n)
+class SolutionBetter {
     public int countTriplets(int[] arr) {
         var n = arr.length;
         Map<Integer, Integer> countOfCumulativeXor = new HashMap<>(), 
