@@ -23,7 +23,7 @@ class Solution {
     void removeZeroCount(int x, int[] zeros) {
         for (int i = 0; i < 32; ++i) {
             if (((x >> i) & 1) == 0) {
-                zeros[i] -= 1;
+                zeros[i]--;
             }
         }
     }
@@ -31,7 +31,7 @@ class Solution {
     void addZeroCount(int x, int[] zeros) {
         for (int i = 0; i < 32; ++i) {
             if (((x >> i) & 1) == 0) {
-                zeros[i] += 1;
+                zeros[i]++;
             }
         }
     }
@@ -40,7 +40,7 @@ class Solution {
         int res = 0;
         for (int i = 0; i < 32; ++i) {
             if (zeros[i] == 0) {
-                res ^= (1 << i);
+                res |= (1 << i);
             }
         }
         return res;
