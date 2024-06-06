@@ -1,16 +1,17 @@
-public class Solution {
+class Solution {
     public int maxArea(int[] height) {
-        int n = height.length, l = 0, r = n-1;
-        var ans = 0;
+        int left = 0, right = height.length - 1;
+        var maxWater = 0;
 
-        while(l < r){
-            var curr = (r-l) * Math.min(height[r], height[l]);
-            ans = Math.max(ans, curr);
-            
-            if(height[r] < height[l]) r--;
-            else l++;
+        while(left < right){
+            var currHeight = Math.min(height[left], height[right]);
+            var currWidth = right - left;
+            maxWater = Math.max(maxWater, currHeight * currWidth);
+
+            if(height[left] < height[right]) left++;
+            else right--;
         }
 
-        return ans;
+        return maxWater;
     }
 }
