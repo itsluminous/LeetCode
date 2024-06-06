@@ -1,4 +1,29 @@
+// by sorting
 class Solution {
+    public boolean isPossibleDivide(int[] nums, int k) {
+        if (nums.length % k != 0) return false;
+
+        // count freq of each number
+        Arrays.sort(nums);
+        var freq = new HashMap<Integer, Integer>();
+        for(var num : nums)
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        
+        // try to make groups of k
+        for(var num : nums) {
+            if(freq.get(num) == 0) continue;
+
+            for(var hand = num; hand < num+k; hand++){
+                if(!freq.containsKey(hand) || freq.get(hand) == 0) return false;
+                freq.put(hand, freq.get(hand) - 1);
+            }
+        }
+        return true;
+    }
+}
+
+// Accepted - using hashmap
+class SolutionHM {
     public boolean isPossibleDivide(int[] nums, int k) {
         var len = nums.length;
         if(len % k != 0) return false;
