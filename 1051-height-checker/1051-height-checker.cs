@@ -11,7 +11,7 @@ public class Solution {
         for(var h = 1; h <= 100 && processed < n; h++){
             var maxPos = pos + freq[h];
             processed += freq[h];
-            for(var i = pos; i < maxPos && processed <= n; i++)
+            for(var i = pos; i < maxPos; i++)
                 if(heights[i] != h) misplaced++;
             pos = maxPos;
         }
