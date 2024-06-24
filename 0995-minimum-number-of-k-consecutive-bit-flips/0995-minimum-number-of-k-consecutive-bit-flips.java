@@ -13,13 +13,13 @@ class Solution {
             // if curr num is 1, and curr index was flipped even times in past windows, then nothing has changed
             // if curr num is 0, and curr index was flipped odd times in past windows, then it is already 1
             if((nums[i] == 1 && (currFlipCount & 1) == 0) || 
-               (nums[i] == 0 && currFlipCount % 2 == 1))
+               (nums[i] == 0 && (currFlipCount & 1) == 1))
                 continue;
 
             // if curr num is 1, and curr index was flipped odd times in past windows, then flip to make it 1
             // if curr num is 0, and curr index was flipped even times in past windows, then flip to make it 1
             if((nums[i] == 1 && (currFlipCount & 1) == 1) || 
-               (nums[i] == 0 && currFlipCount % 2 == 0)){
+               (nums[i] == 0 && (currFlipCount & 1) == 0)){
                 if(i + k > n) return -1;    // the flip window has to be k, can't be less than that
                 isFlippedAt[i] = 1;         // flip curr idx to make it 1
                 currFlipCount++;
