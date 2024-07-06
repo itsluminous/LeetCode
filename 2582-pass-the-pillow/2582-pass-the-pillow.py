@@ -1,5 +1,5 @@
-class Solution:
-    def passThePillow(self, n: int, time: int) -> int:
+class Solution(object):
+    def passThePillow(self, n, time):
         # remove full cycles
         roundTrip = (n-1) * 2
         time %= roundTrip
