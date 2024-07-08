@@ -25,7 +25,7 @@ class Solution {
 
             var root = trie.root;
             for(var j=i; j<n; j++){
-                root = root.children.get(target.charAt(j));
+                root = root.children[target.charAt(j) - 'a'];
                 if(root == null) break;
                 
                 if(root.index != -1) {
@@ -39,7 +39,7 @@ class Solution {
     }
 
     public class TrieNode {
-        Map<Character, TrieNode> children = new HashMap<>();
+        TrieNode[] children = new TrieNode[26];
         int index = -1;
     }
 
@@ -48,8 +48,11 @@ class Solution {
 
         void insert(String word, int index) {
             TrieNode node = root;
-            for (var ch : word.toCharArray()) 
-                node = node.children.computeIfAbsent(ch, k -> new TrieNode());
+            for (var ch : word.toCharArray()){
+                if(node.children[ch - 'a'] == null) 
+                    node.children[ch - 'a'] = new TrieNode();
+                node = node.children[ch - 'a'];
+            }
             node.index = index;
         }
     }
