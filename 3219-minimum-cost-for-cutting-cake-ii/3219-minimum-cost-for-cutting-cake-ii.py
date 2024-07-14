@@ -17,12 +17,10 @@ class Solution:
                 vCount += 1
                 vidx -= 1
         
-        while hidx >= 0:
-            cost += hCut[hidx] * vCount
-            hidx -= 1
+        for i in range(hidx, -1, -1):
+            cost += hCut[i] * vCount
         
-        while vidx >= 0:
-            cost += vCut[vidx] * hCount
-            vidx -= 1
-        
+        for i in range(vidx, -1, -1):
+            cost += vCut[i] * hCount
+
         return cost
