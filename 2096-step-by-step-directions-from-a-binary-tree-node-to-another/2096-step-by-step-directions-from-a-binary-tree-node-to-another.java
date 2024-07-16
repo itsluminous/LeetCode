@@ -1,6 +1,5 @@
 class Solution {
-    StringBuilder startPath = new StringBuilder(), destPath = new StringBuilder();
-    int found = 0; // how many nodes are discovered in the tree
+    String startPath, destPath;
 
     public String getDirections(TreeNode root, int startValue, int destValue) {
         dfs(root, startValue, destValue, new StringBuilder());
@@ -15,7 +14,7 @@ class Solution {
         return ans.toString();
     }
 
-    private int findCommonPathLength(StringBuilder startPath, StringBuilder destPath){
+    private int findCommonPathLength(String startPath, String destPath){
         int startLen = startPath.length(), destLen = destPath.length();
         var minLen = Math.min(startLen, destLen);
         
@@ -29,23 +28,16 @@ class Solution {
     }
 
     private void dfs(TreeNode node, int startValue, int destValue, StringBuilder path){
-        if(node == null) return;
-        if(node.val == startValue){
-            startPath.append(path);
-            found++;
-        }
-        if(node.val == destValue){
-            destPath.append(path);
-            found++;
-        }
+        if(node.val == startValue) startPath = path.toString();
+        else if(node.val == destValue) destPath = path.toString();
 
-        if(node.left != null && found != 2){
+        if(node.left != null && (startPath == null || destPath == null)){
             path.append("L");
             dfs(node.left, startValue, destValue, path);
             path.deleteCharAt(path.length() - 1);
         }
 
-        if(node.right != null && found != 2){
+        if(node.right != null && (startPath == null || destPath == null)){
             path.append("R");
             dfs(node.right, startValue, destValue, path);
             path.deleteCharAt(path.length() - 1);
