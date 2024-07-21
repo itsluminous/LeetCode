@@ -1,3 +1,4 @@
+// Bob can only win if total count of vowels is 0
 public class Solution {
     public bool DoesAliceWin(string s) {
         foreach(var ch in s)
