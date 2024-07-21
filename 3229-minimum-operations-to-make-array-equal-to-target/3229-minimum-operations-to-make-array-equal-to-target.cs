@@ -12,9 +12,9 @@ public class Solution {
                 incr = diff;
                 decr = 0;
             } else if (diff < 0) {
-                if (decr < -diff)
-                    ops += -diff - decr;
-                decr = -diff;
+                if (diff < decr)
+                    ops += decr - diff;
+                decr = diff;
                 incr = 0;
             } else {
                 incr = decr = 0;
