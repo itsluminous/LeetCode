@@ -12,10 +12,10 @@ func minimumOperations(nums []int, target []int) int64 {
             incr = diff
             decr = 0
         } else if diff < 0 {
-            if decr < -diff {
-                ops += -diff - decr
+            if diff < decr {
+                ops += decr - diff
             }
-            decr = -diff
+            decr = diff
             incr = 0
         } else {
             incr = 0
