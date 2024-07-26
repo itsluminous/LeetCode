@@ -1,5 +1,59 @@
 public class Solution {
     public int FindTheCity(int n, int[][] edges, int distanceThreshold) {
+        var INF = (int) 1e9 + 7;
+        var shortestPaths = new int[n][];
+        for(var i=0; i<n; i++){
+            shortestPaths[i] = new int[n];
+            for(var j=0; j<n; j++)
+                shortestPaths[i][j] = INF;
+            shortestPaths[i][i] = 0;
+        }
+
+        foreach(var edge in edges){
+            var (city1, city2, weight) = (edge[0], edge[1], edge[2]);
+            if(weight > distanceThreshold) continue;
+            shortestPaths[city1][city2] = weight;
+            shortestPaths[city2][city1] = weight;
+        }
+
+        Floyd(n, shortestPaths);
+        return CityWithFewestReachable(n, shortestPaths, distanceThreshold);
+    }
+
+    private int CityWithFewestReachable(int n, int[][] shortestPaths, int distanceThreshold){
+        int city = -1, nbrCount = n;
+
+        for(var i=0; i<n; i++){
+            var reachableCount = 0;
+            for(var j=0; j<n; j++){
+                if(i == j) continue;
+                if(shortestPaths[i][j] <= distanceThreshold) reachableCount++;
+            }
+
+            if(reachableCount <= nbrCount){
+                nbrCount = reachableCount;
+                city = i;
+            }
+        }
+
+        return city;
+    }
+
+    private void Floyd(int n, int[][] shortestPaths){
+        for(var k=0; k<n; k++){
+            for(var i=0; i<n; i++){
+                for(var j=0; j<n; j++){
+                    shortestPaths[i][j] = Math.Min(shortestPaths[i][j], 
+                                                    shortestPaths[i][k] + shortestPaths[k][j]);
+                }
+            }
+        }
+    }
+}
+
+// Accepted
+public class SolutionDijkastra {
+    public int FindTheCity(int n, int[][] edges, int distanceThreshold) {
         var graph = BuildAdjList(n, edges, distanceThreshold);
 
         var shortestPaths = new int[n][];
@@ -8,7 +62,7 @@ public class Solution {
             for(var j=0; j<n; j++)
                 shortestPaths[i][j] = int.MaxValue;
             shortestPaths[i][i] = 0;
-            Dijstra(graph, shortestPaths[i], i);
+            Dijkastra(graph, shortestPaths[i], i);
         }
 
         return CityWithFewestReachable(n, shortestPaths, distanceThreshold);
@@ -33,7 +87,7 @@ public class Solution {
         return city;
     }
 
-    private void Dijstra(List<int[]>[] graph, int[] shortestPath, int src){
+    private void Dijkastra(List<int[]>[] graph, int[] shortestPath, int src){
         var pq = new PriorityQueue<int[], int>();
         pq.Enqueue([src, 0], 0);
 
