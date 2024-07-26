@@ -1,12 +1,64 @@
 class Solution {
     public int findTheCity(int n, int[][] edges, int distanceThreshold) {
+        var INF = (int) 1e9 + 7;
+        var shortestPaths = new int[n][n];
+        for(var i=0; i<n; i++){
+            Arrays.fill(shortestPaths[i], INF);
+            shortestPaths[i][i] = 0;
+        }
+
+        for(var edge : edges){
+            int city1 = edge[0], city2 = edge[1], weight = edge[2];
+            if(weight > distanceThreshold) continue;
+            shortestPaths[city1][city2] = weight;
+            shortestPaths[city2][city1] = weight;
+        }
+
+        floyd(n, shortestPaths);
+        return cityWithFewestReachable(n, shortestPaths, distanceThreshold);
+    }
+
+    private int cityWithFewestReachable(int n, int[][] shortestPaths, int distanceThreshold){
+        int city = -1, nbrCount = n;
+
+        for(var i=0; i<n; i++){
+            var reachableCount = 0;
+            for(var j=0; j<n; j++){
+                if(i == j) continue;
+                if(shortestPaths[i][j] <= distanceThreshold) reachableCount++;
+            }
+
+            if(reachableCount <= nbrCount){
+                nbrCount = reachableCount;
+                city = i;
+            }
+        }
+
+        return city;
+    }
+
+    private void floyd(int n, int[][] shortestPaths){
+        for(var k=0; k<n; k++){
+            for(var i=0; i<n; i++){
+                for(var j=0; j<n; j++){
+                    shortestPaths[i][j] = Math.min(shortestPaths[i][j], 
+                                                    shortestPaths[i][k] + shortestPaths[k][j]);
+                }
+            }
+        }
+    }
+}
+
+// Accepted - Dijkastra
+class SolutionDijkastra {
+    public int findTheCity(int n, int[][] edges, int distanceThreshold) {
         var graph = buildAdjList(n, edges, distanceThreshold);
 
         var shortestPaths = new int[n][n];
         for(var i=0; i<n; i++){
             Arrays.fill(shortestPaths[i], Integer.MAX_VALUE);
             shortestPaths[i][i] = 0;
-            dijstra(graph, shortestPaths[i], i);
+            dijkastra(graph, shortestPaths[i], i);
         }
 
         return cityWithFewestReachable(n, shortestPaths, distanceThreshold);
@@ -31,7 +83,7 @@ class Solution {
         return city;
     }
 
-    private void dijstra(List<int[]>[] graph, int[] shortestPath, int src){
+    private void dijkastra(List<int[]>[] graph, int[] shortestPath, int src){
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
         pq.add(new int[]{src, 0});
 
