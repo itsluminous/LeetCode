@@ -1,7 +1,6 @@
 class Solution:
     def minimumDeletions(self, s: str) -> int:
-        n, minDel, b = len(s), 0, 0
-        
+        minDel = b = 0
         for ch in s:
             if ch == 'b':
                 b += 1
