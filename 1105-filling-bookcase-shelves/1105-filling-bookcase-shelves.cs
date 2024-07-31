@@ -13,7 +13,7 @@ public class Solution {
         var (bookWidth, bookHeight) = (books[idx][0], books[idx][1]);
         var currHeight = bookHeight + MinHeightShelves(books, shelfWidth, idx+1, shelfWidth - bookWidth, bookHeight);
         if(bookWidth <= width){
-            var heightIncr = Math.Max(0, bookHeight - height);
+            var heightIncr = bookHeight > height ? bookHeight - height : 0;
             var sameRack = heightIncr + MinHeightShelves(books, shelfWidth, idx+1, width - bookWidth, height + heightIncr);
             currHeight = Math.Min(currHeight, sameRack);
         }
