@@ -13,7 +13,7 @@ class Solution {
         int bookWidth = books[idx][0], bookHeight = books[idx][1];
         var currHeight = bookHeight + minHeightShelves(books, shelfWidth, idx+1, shelfWidth - bookWidth, bookHeight);
         if(bookWidth <= width){
-            var heightIncr = Math.max(0, bookHeight - height);
+            var heightIncr = bookHeight > height ? bookHeight - height : 0;
             var sameRack = heightIncr + minHeightShelves(books, shelfWidth, idx+1, width - bookWidth, height + heightIncr);
             currHeight = Math.min(currHeight, sameRack);
         }
