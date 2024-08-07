@@ -1,4 +1,35 @@
 public class Solution {
+    string[] lessThan20 = {"","One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine","Ten","Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    string[] tens = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+    string[] thousands = {"", "Thousand", "Million", "Billion"};
+    
+    public string NumberToWords(int num) {
+        if(num == 0) return "Zero";
+        var words = "";
+        
+        for(int i=0; num>0; num/=1000, i++){
+            if (num % 1000 != 0)
+    	        words = helper(num % 1000) + thousands[i] + " " + words;
+        }
+        return words.Trim();
+    }
+    
+    private string helper(int num) {
+        switch(num){
+            case 0:
+                return "";
+            case int n when n < 20:
+                return lessThan20[num] + " ";
+            case int n when n < 100:
+                return tens[num/10] + " " + helper(num % 10);
+            default:
+                return lessThan20[num / 100] + " Hundred " + helper(num % 100);
+        }
+    }
+}
+
+//Accepted
+public class SolutionBig {
     public string NumberToWords(int num) {
         if(num == 0) return "Zero";
 
