@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/integer-to-english-words/?envType=problem-list-v2&envId=5fj1osit">273. Integer to English Words</a></h2><h3>Hard</h3><hr><p>Convert a non-negative integer <code>num</code> to its English words representation.</p>
+<h2><a href="https://leetcode.com/problems/integer-to-english-words/?envType=daily-question&envId=2024-08-07">273. Integer to English Words</a></h2><h3>Hard</h3><hr><p>Convert a non-negative integer <code>num</code> to its English words representation.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
