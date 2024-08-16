@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxDistance(vector<vector<int>>& arrays) {
-        int smallest = 10001, biggest = -10001, maxDist = 0;
+        auto smallest = 10001, biggest = -10001, maxDist = 0;
         for(auto& arr : arrays){
             maxDist = std::max(maxDist, biggest - arr[0]);
             maxDist = std::max(maxDist, arr[arr.size()-1] - smallest);
