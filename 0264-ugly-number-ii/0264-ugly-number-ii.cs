@@ -1,5 +1,25 @@
-// Accepted - slow
 public class Solution {
+    public int NthUglyNumber(int n) {
+        var ugly = new int[n];
+        ugly[0] = 1;
+        int idx2 = 0, idx3 = 0, idx5 = 0;
+        int mul2 = 2, mul3 = 3, mul5 = 5;   // multiple of 2, 3, 5
+
+        for(var i=1; i<n; i++){
+            var minNum = Math.Min(mul2, Math.Min(mul3, mul5));
+            ugly[i] = minNum;
+
+            if(minNum == mul2) mul2 = 2 * ugly[++idx2];
+            if(minNum == mul3) mul3 = 3 * ugly[++idx3];
+            if(minNum == mul5) mul5 = 5 * ugly[++idx5];
+        }
+
+        return ugly[n-1];
+    }
+}
+
+// Accepted - slow
+public class SolutionPQ {
     public int NthUglyNumber(int n) {
         var minHeap = new PriorityQueue<double, double>();
         var set = new HashSet<double>();
