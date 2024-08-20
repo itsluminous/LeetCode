@@ -15,12 +15,11 @@ public class Solution {
     }
 
     private int Score(int[] piles, int m, int idx){
-        if(idx == piles.Length) return 0;
-        if(idx == piles.Length - 1) return piles[idx];
+        if(idx + 2*m >= piles.Length) return suffixSum[idx];    // last player takes it all
         if(dp[m,idx] != 0) return dp[m,idx];
 
         var maxScore = 0;
-        for(var i=1; i<= 2*m && idx+i<=piles.Length; i++){
+        for(var i=1; i<= 2*m; i++){
             var take = suffixSum[idx] - suffixSum[idx+i];
             var leftover = suffixSum[idx+i] - Score(piles, Math.Max(m, i), idx+i);
             maxScore = Math.Max(maxScore, take + leftover);
