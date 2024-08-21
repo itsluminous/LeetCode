@@ -24,9 +24,10 @@ class Solution {
                 
                 // try to split this string of size len in two parts at different indexes
                 for(var k=0; k<len; k++){
-                    var temp = dp[start][start+k] + dp[start+k+1][start+len];
-                    if(s.charAt(start+k) == s.charAt(start+len)) temp--;
-                    dp[start][start+len] = Math.min(dp[start][start+len], temp);
+                    var turn = dp[start][start+k] + dp[start+k+1][start+len];
+                    // if any char matches last char, they can be printed in 1 turn
+                    if(s.charAt(start+k) == s.charAt(start+len)) turn--;
+                    dp[start][start+len] = Math.min(dp[start][start+len], turn);
                 }
             }
         }
