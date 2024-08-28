@@ -1,50 +1,50 @@
+// make all cells in grid2 as +2 of what they are
+// so any overlapping cell will always be 3
+// any empty cell will be 0 or 2
 class Solution {
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         int m = grid1.length, n = grid1[0].length;
 
         // grid1
-        Map<String, String> parent = new HashMap<>();
         for(var i=0; i<m; i++)
             for(var j=0; j<n; j++)
-                    dfs(grid1, parent, i, j, i+":"+j);
+                    dfs(grid1, grid2, i, j);
 
         // grid2
         var count = 0;
         for(var i=0; i<m; i++){
             for(var j=0; j<n; j++){
-                if(grid2[i][j] == 1){
-                    var p = parent.getOrDefault(i+":"+j, "something");
-                    count += dfs2(grid2, parent, i, j, p);
-                }   
+                if(grid2[i][j] == 3)
+                    count += dfs2(grid2, i, j);
             }
         }
 
         return count;
     }
 
-    private void dfs(int[][] grid, Map<String, String> parent, int i, int j, String p){
-        int m = grid.length, n = grid[0].length;
-        if(i == -1 || i == m || j == -1 || j == n || grid[i][j] == 0) return;
-        parent.put(i+":"+j, p);
-        grid[i][j] = 0;
-        dfs(grid, parent, i-1, j, p);
-        dfs(grid, parent, i+1, j, p);
-        dfs(grid, parent, i, j-1, p);
-        dfs(grid, parent, i, j+1, p);
+    private void dfs(int[][] grid1, int[][] grid2, int i, int j){
+        int m = grid1.length, n = grid1[0].length;
+        if(i == -1 || i == m || j == -1 || j == n || grid1[i][j] == 0) return;
+        grid1[i][j] = 0;
+        grid2[i][j] += 2;
+        dfs(grid1, grid2, i-1, j);
+        dfs(grid1, grid2, i+1, j);
+        dfs(grid1, grid2, i, j-1);
+        dfs(grid1, grid2, i, j+1);
     }
 
-    private int dfs2(int[][] grid, Map<String, String> parent, int i, int j, String p){
+    private int dfs2(int[][] grid, int i, int j){
         int m = grid.length, n = grid[0].length;
-        if(i == -1 || i == m || j == -1 || j == n || grid[i][j] == 0) return 1;
+        if(i == -1 || i == m || j == -1 || j == n || grid[i][j] == 0 || grid[i][j] == 2) return 1;
 
+        var match = grid[i][j] == 3 ? 1 : 0;
         grid[i][j] = 0;
-        var match = 1;
-        match &= dfs2(grid, parent, i-1, j, p);
-        match &= dfs2(grid, parent, i+1, j, p);
-        match &= dfs2(grid, parent, i, j-1, p);
-        match &= dfs2(grid, parent, i, j+1, p);
 
-        if(!parent.containsKey(i+":"+j) || !parent.get(i+":"+j).equals(p)) return 0;
+        match &= dfs2(grid, i-1, j);
+        match &= dfs2(grid, i+1, j);
+        match &= dfs2(grid, i, j-1);
+        match &= dfs2(grid, i, j+1);
+
         return match;
     }
 }
