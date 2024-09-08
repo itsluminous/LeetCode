@@ -13,21 +13,14 @@ public class Solution {
 
         var minSize = len / k;
         var extraCount = len % k;
+        head = AddNodes(ans, head, 0, extraCount, minSize+1);  // lists with extra nodes
+        AddNodes(ans, head, extraCount, k, minSize);    // lists with min nodes
 
-        // add all lists with extra nodes
-        for(var ansIdx=0; ansIdx < extraCount; ansIdx++){
-            ans[ansIdx] = head;
-            var prev = head;
-            for(var i=0; i<=minSize; i++){
-                prev = head;
-                head = head.next;
-            }
+        return ans;
+    }
 
-            prev.next = null;
-        }
-
-        // add all lists with min nodes
-        for(var ansIdx=extraCount; ansIdx < k && head != null; ansIdx++){
+    private ListNode AddNodes(ListNode[] ans, ListNode head, int start, int end, int minSize){
+        for(var ansIdx=start; ansIdx < end && head != null; ansIdx++){
             ans[ansIdx] = head;
             var prev = head;
             for(var i=0; i<minSize; i++){
@@ -38,7 +31,7 @@ public class Solution {
             prev.next = null;
         }
 
-        return ans;
+        return head;
     }
 }
 
