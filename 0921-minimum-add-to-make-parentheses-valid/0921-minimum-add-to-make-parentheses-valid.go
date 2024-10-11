@@ -1,6 +1,5 @@
 func minAddToMakeValid(s string) int {
-    open := 0
-    close := 0
+    open, close := 0, 0
     for _, ch := range s {
         if ch == '(' {
             open++
