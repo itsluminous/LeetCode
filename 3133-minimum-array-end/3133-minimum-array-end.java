@@ -7,8 +7,8 @@
 // ans   1 0 0 1 1 0 1 1 0
 class Solution {
     public long minEnd(int n, int x) {
-        long num = x, remaining = n-1, pos = 1;
-        for(remaining = n-1; remaining > 0; pos <<= 1){
+        long num = x, pos = 1;
+        for(long remaining = n-1; remaining > 0; pos <<= 1){
             if((pos & x) > 0) continue;     // the bit at this pos is 1 in x, skip it
             num |= pos * (remaining & 1);   // set num's bit at pos position if last bit of remaining is 1
             remaining >>= 1;                // right shift remaining, so that we try next pos now
