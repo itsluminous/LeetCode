@@ -14,6 +14,4 @@ class Solution:
 
     def getMaxLength(self, prev, curr, k):
         kk = min(prev, curr) # length of k for prev & curr subarrays
-        kk = max(kk, curr//2)
-        k = max(k, kk)
-        return k
+        return max(k, kk, curr//2)
