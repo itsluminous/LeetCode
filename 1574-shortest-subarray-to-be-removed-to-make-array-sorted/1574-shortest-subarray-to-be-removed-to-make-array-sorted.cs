@@ -5,6 +5,30 @@ public class Solution {
         int n = arr.Length, lidx = 0, ridx = n-1;
         if(n == 1) return 0;    // already sorted
         
+        // find index of where decreasing arr starting at n-1 ends
+        while(ridx > 0 && arr[ridx] >= arr[ridx-1]) ridx--;
+
+        // find optimal idx in right part, to merge with left part
+        var removalLen = ridx;
+        while(lidx < ridx && (lidx == 0 || arr[lidx-1] <= arr[lidx])){
+            while(ridx < n && arr[lidx] > arr[ridx])
+                ridx++;
+            removalLen = Math.Min(removalLen, ridx - lidx - 1);
+            lidx++;
+        }
+
+        return removalLen;
+    }
+}
+
+// Accepted - binary search
+// the array after removing something will either start at 0, or end at n-1, or both
+// so at least one end will be there for sure
+public class SolutionBS {
+    public int FindLengthOfShortestSubarray(int[] arr) {
+        int n = arr.Length, lidx = 0, ridx = n-1;
+        if(n == 1) return 0;    // already sorted
+        
         // find index of where increasing arr starting at 0 ends
         while(lidx < n-1 && arr[lidx+1] >= arr[lidx]) lidx++;
 
