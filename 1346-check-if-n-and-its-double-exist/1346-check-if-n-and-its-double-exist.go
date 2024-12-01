@@ -1,5 +1,5 @@
 func checkIfExist(arr []int) bool {
-    nums := make(map[int]bool)
+    nums := make(map[int]struct{})
     for _, num := range arr {
         if _, exists := nums[num * 2]; exists {
             return true
@@ -9,7 +9,7 @@ func checkIfExist(arr []int) bool {
                 return true
             }
         }
-        nums[num] = true
+        nums[num] = struct{}{}
     }
     return false;
 }
