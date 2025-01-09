@@ -1,6 +1,5 @@
 public class Solution {
     public int PrefixCount(string[] words, string pref) {
-        var prefWords = words.Where(w => w.StartsWith(pref)).ToList();
-        return prefWords.Count;
+        return words.Where(w => w.StartsWith(pref)).Count();
     }
 }
