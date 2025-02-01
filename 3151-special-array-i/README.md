@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/special-array-i/">3151. Special Array I</a></h2><h3>Easy</h3><hr><p>An array is considered <strong>special</strong> if every pair of its adjacent elements contains two numbers with different parity.<!-- notionvc: e6bed0fa-c67d-43a7-81b4-99fb85b99e98 --></p>
+<h2><a href="https://leetcode.com/problems/special-array-i/?envType=daily-question&envId=2025-02-01">3151. Special Array I</a></h2><h3>Easy</h3><hr><p>An array is considered <strong>special</strong> if every pair of its adjacent elements contains two numbers with different parity.<!-- notionvc: e6bed0fa-c67d-43a7-81b4-99fb85b99e98 --></p>
 
 <p>You are given an array of integers <code>nums</code>. Return <code>true</code> if <code>nums</code> is a <strong>special</strong> array, otherwise, return <code>false</code>.</p>
 
