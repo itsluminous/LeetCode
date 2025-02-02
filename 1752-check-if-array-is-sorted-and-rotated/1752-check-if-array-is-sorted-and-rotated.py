@@ -6,5 +6,4 @@ class Solution:
             if rotated: return False
             rotated = True
 
-        if not rotated or nums[0] >= nums[n-1]: return True
-        return False
+        return not rotated or nums[0] >= nums[n-1]
