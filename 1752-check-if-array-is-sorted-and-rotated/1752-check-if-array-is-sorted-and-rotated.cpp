@@ -10,6 +10,6 @@ public:
             rotated = true;
         }
 
-        return (!rotated || nums[0] >= nums[n-1]);
+        return !rotated || nums[0] >= nums[n-1];
     }
 };
