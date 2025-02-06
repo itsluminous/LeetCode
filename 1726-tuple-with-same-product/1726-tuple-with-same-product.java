@@ -7,12 +7,12 @@ class Solution {
         for(var i=0; i<n; i++){
             for(var j=i+1; j<n; j++){
                 var p = nums[i] * nums[j];
-                count += prod.getOrDefault(p, 0) * 8;
+                count += prod.getOrDefault(p, 0);
                 prod.put(p, 1 + prod.getOrDefault(p, 0));
             }
         }
 
-        return count;
+        return 8 * count;
     }
 }
 
