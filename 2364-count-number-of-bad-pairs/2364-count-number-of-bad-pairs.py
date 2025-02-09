@@ -4,7 +4,7 @@ class Solution:
         mismatch = defaultdict(int)  # key = diff, value = count
         numsCount = len(nums)
 
-        for i in range(len(nums)):
+        for i in range(numsCount):
             diff = nums[i] - i
             mismatch[diff] += 1
         
