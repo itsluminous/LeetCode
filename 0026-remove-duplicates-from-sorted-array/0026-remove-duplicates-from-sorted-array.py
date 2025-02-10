@@ -1,12 +1,8 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        left = right = 0
-        seen = [False] * 201
-
-        while right < len(nums):
-            if not seen[nums[right] + 100]:
-                nums[left] = nums[right]
-                seen[nums[right] + 100] = True
-                left += 1
-            right += 1
-        return left
+        k = 1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[k] = nums[i]
+                k += 1
+        return k
