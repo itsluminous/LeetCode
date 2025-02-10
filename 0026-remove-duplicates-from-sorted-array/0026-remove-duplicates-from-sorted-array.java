@@ -1,16 +1,10 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int n = nums.length, left = 0, right = 0;
-        var seen = new boolean[201];
-
-        while(right < n){
-            if(!seen[nums[right] + 100]){
-                nums[left++] = nums[right];
-                seen[nums[right] + 100] = true;
-            }
-            right++;
+        var k = 1;
+        for(var i=1; i < nums.length; i++){
+            if(nums[i] != nums[i-1])
+                nums[k++] = nums[i];
         }
-
-        return left;
+        return k;
     }
 }
