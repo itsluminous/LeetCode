@@ -1,10 +1,10 @@
-public class Solution {
+class Solution {
     public int maxProfit(int[] prices) {
-        int min=prices[0], maxProfit=0;
+        int profit = 0, lowest = prices[0];
         for(var p : prices){
-            maxProfit = Math.max(maxProfit, p - min);
-            min = Math.min(p, min);
+            profit = Math.max(profit, p - lowest);
+            lowest = Math.min(lowest, p);
         }
-        return maxProfit;
+        return profit;
     }
 }
