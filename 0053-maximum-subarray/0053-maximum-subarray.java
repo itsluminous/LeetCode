@@ -1,10 +1,11 @@
-public class Solution {
+class Solution {
     public int maxSubArray(int[] nums) {
-        int max = nums[0], curr = nums[0];
-        for(var i=1; i<nums.length; i++){
-            curr = Math.max(curr + nums[i], nums[i]);
-            max = Math.max(max, curr);
+        int maxSum = Integer.MIN_VALUE, currSum = 0;
+        for(var num : nums){
+            currSum = Math.max(currSum + num, num);
+            maxSum = Math.max(maxSum, currSum);
         }
-        return max;
+        
+        return maxSum;
     }
 }
