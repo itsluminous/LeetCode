@@ -1,10 +1,11 @@
 public class Solution {
     public int MaxSubArray(int[] nums) {
-        int max = nums[0], curr = nums[0];
-        for(var i=1; i<nums.Length; i++){
-            curr = Math.Max(curr + nums[i], nums[i]);
-            max = Math.Max(max, curr);
+        int maxSum = int.MinValue, currSum = 0;
+        foreach(var num in nums){
+            currSum = Math.Max(currSum + num, num);
+            maxSum = Math.Max(maxSum, currSum);
         }
-        return max;
+        
+        return maxSum;
     }
 }
