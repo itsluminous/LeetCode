@@ -1,10 +1,10 @@
 public class Solution {
     public int MaxProfit(int[] prices) {
-        int min=prices[0], maxProfit=0;
+        int profit = 0, lowest = prices[0];
         foreach(var p in prices){
-            maxProfit = Math.Max(maxProfit, p - min);
-            min = Math.Min(p, min);
+            profit = Math.Max(profit, p - lowest);
+            lowest = Math.Min(lowest, p);
         }
-        return maxProfit;
+        return profit;
     }
 }
