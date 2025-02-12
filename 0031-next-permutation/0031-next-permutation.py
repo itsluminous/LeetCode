@@ -17,9 +17,5 @@ class Solution:
             nums[justBigger], nums[decreasingPair] = nums[decreasingPair], nums[justBigger]
 
         # reverse all numbers after `decreasingPair` idx (so that they now become ascending slope)
-        left, right = decreasingPair+1, n-1
-        while left < right:
-            nums[left], nums[right] = nums[right], nums[left]
-            left += 1
-            right -= 1
+        nums[decreasingPair+1:n] = nums[decreasingPair+1:n][::-1]
         
