@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/rotting-oranges/?envType=study-plan-v2&envId=leetcode-75">994. Rotting Oranges</a></h2><h3>Medium</h3><hr><p>You are given an <code>m x n</code> <code>grid</code> where each cell can have one of three values:</p>
+<h2><a href="https://leetcode.com/problems/rotting-oranges/">994. Rotting Oranges</a></h2><h3>Medium</h3><hr><p>You are given an <code>m x n</code> <code>grid</code> where each cell can have one of three values:</p>
 
 <ul>
 	<li><code>0</code> representing an empty cell,</li>
