@@ -27,9 +27,10 @@ class Solution {
         var n = s.length() - 2;
         // possible combinations of a (mod2) and b (mod5) and their corresponding x mod10 (using CRT)
         // eg. 0 |0 → 0, 0 |1 → 6, 0 |2 → 2, 0 |3 → 8 and so on
+        // so a even number (eg. 8), will have mod2 = 0, mod5 = 3, so look at index [0, 3] which should be 8
         int[][] combTable = {
-            {0, 6, 2, 8, 4}, 
-            {5, 1, 7, 3, 9}
+            {0, 6, 2, 8, 4},    // Even numbers (mod 2 = 0)
+            {5, 1, 7, 3, 9}     // Odd numbers (mod 2 = 1)
         };
 
         var coefficients = new int[n + 1];
