@@ -2,35 +2,34 @@ public class Solution {
     int[,] dp;
 
     public int MinDistance(string word1, string word2) {
-        int w1len = word1.Length, w2len = word2.Length;
-        dp = new int[w1len,w2len];
-        for(var i=0; i<w1len; i++)
-            for(var j=0; j<w2len; j++)
-                dp[i,j] = -1;
-
+        int len1 = word1.Length, len2 = word2.Length;
+        dp = new int[len1, len2];
+        for(var i=0; i<len1; i++)
+            for(var j=0; j<len2; j++)
+                dp[i, j] = -1;
+        
         return MinDistance(word1, word2, 0, 0);
     }
 
-    public int MinDistance(string word1, string word2, int w1, int w2) {
-        int w1len = word1.Length, w2len = word2.Length;
+    private int MinDistance(string word1, string word2, int w1, int w2){
+        int len1 = word1.Length, len2 = word2.Length;
+        if(w1 == len1 && w2 == len2) return 0;  // no further changes needed
+        if(w1 == len1) return len2 - w2;        // insert all remaining chars
+        if(w2 == len2) return len1 - w1;        // delete remaining chars
+        if(dp[w1, w2] != -1) return dp[w1, w2]; // already evaluated
+
+        var dist = 0;
         
-        if(w1 == w1len) return  w2len-w2;   // all remaining chars will have to be inserted
-        if(w2 == w2len) return  w1len-w1;   // all extra chars will have to be deleted
-
-        if(dp[w1,w2] != -1) return dp[w1,w2];
-
+        // if chars at curr index in both words match
         if(word1[w1] == word2[w2])
-            dp[w1,w2] = MinDistance(word1, word2, w1+1, w2+1);  // no operations needed for current chars
-        else{
-            // we can do 3 operations : insert, delete or replace
-            var minOp = int.MaxValue;
-            minOp = Math.Min(minOp, 1 + MinDistance(word1, word2, w1, w2+1));   // insert
-            minOp = Math.Min(minOp, 1 + MinDistance(word1, word2, w1+1, w2));   // delete
-            minOp = Math.Min(minOp, 1 + MinDistance(word1, word2, w1+1, w2+1)); // replace
-            
-            dp[w1,w2] = minOp;
+            dist = MinDistance(word1, word2, w1+1, w2+1);
+        else {
+            dist = 1 + MinDistance(word1, word2, w1+1, w2+1);               // replace
+            dist = Math.Min(dist, 1 + MinDistance(word1, word2, w1+1, w2)); // delete
+            dist = Math.Min(dist, 1 + MinDistance(word1, word2, w1, w2+1)); // insert
         }
 
-        return dp[w1,w2];
+        dp[w1, w2] = dist;
+        return dist;
     }
 }
