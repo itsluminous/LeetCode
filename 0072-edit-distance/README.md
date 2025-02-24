@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/edit-distance/?envType=study-plan-v2&envId=leetcode-75">72. Edit Distance</a></h2><h3>Medium</h3><hr><p>Given two strings <code>word1</code> and <code>word2</code>, return <em>the minimum number of operations required to convert <code>word1</code> to <code>word2</code></em>.</p>
+<h2><a href="https://leetcode.com/problems/edit-distance/">72. Edit Distance</a></h2><h3>Medium</h3><hr><p>Given two strings <code>word1</code> and <code>word2</code>, return <em>the minimum number of operations required to convert <code>word1</code> to <code>word2</code></em>.</p>
 
 <p>You have the following three operations permitted on a word:</p>
 
