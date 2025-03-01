@@ -1,23 +1,20 @@
 public class Solution {
     public int[] ApplyOperations(int[] nums) {
-        var n = nums.Length;
-        int left = 0, right = 0;
+        int n = nums.Length, left = 0, right;
 
-        while(right < n-1){
+        for(right = 0; right < n-1; right++){
             if(nums[right] != nums[right+1] && nums[right] != 0)
                 nums[left++] = nums[right];
-            else if(nums[right] == nums[right+1] && nums[right] == 0)
-                right++;
-            else if(nums[right] == nums[right+1])
+            else if(nums[right] == nums[right+1] && nums[right] != 0)
                 nums[left++] = 2 * nums[right++];
-
-            right++;
+            else if(nums[right] == nums[right+1])   // and nums[right] == 0
+                right++;
         }
 
-        if(right < n)
-            nums[left++] = nums[right]; // explicit operation for last digit
+        // explicit operation for last digit
+        if(right < n) nums[left++] = nums[right]; 
         
-        // append 0
+        // append 0 at end and return
         while(left < n) nums[left++] = 0;
         return nums;
     }
