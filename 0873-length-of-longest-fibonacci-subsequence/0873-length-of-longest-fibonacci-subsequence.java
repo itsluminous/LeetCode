@@ -1,7 +1,7 @@
 class Solution {
     public int lenLongestFibSubseq(int[] arr) {
         int n = arr.length, maxLen = 0;
-        var dp = new int[n][n];
+        var dp = new int[n][n]; // length of fibonacci ending with idx i, j
 
         for(var curr=2; curr<n; curr++){
             int left = 0, right = curr - 1;
