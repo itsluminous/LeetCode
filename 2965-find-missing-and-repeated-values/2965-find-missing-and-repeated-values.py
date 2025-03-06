@@ -3,6 +3,7 @@ class Solution:
         n = len(grid) ** 2
         currSum = dup = 0
         uniq = set()
+
         for row in grid:
             for num in row:
                 if num in uniq:
