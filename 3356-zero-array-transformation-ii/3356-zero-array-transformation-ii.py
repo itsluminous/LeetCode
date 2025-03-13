@@ -1,23 +1,26 @@
 class Solution:
     def minZeroArray(self, nums: List[int], queries: List[List[int]]) -> int:
-        n, q, k, curr_sum = len(nums), len(queries), 0, 0
-        prefix_sum = [0] * (n+1)
+        n, q = len(nums), len(queries)
+        decr = [0] * (n+1)  # prefix sum of how much can be decremented at each index
+        currMaxDecr = 0    # max decr allowed currently
+        k = 0
 
         for i, num in enumerate(nums):
             # keep using queries till we cannot qualify current num
-            while curr_sum + prefix_sum[i] < num:
-                if k == q: return -1    # exhausted all queries
+            while num > currMaxDecr + decr[i]:
+                if k == q: return -1   # exhausted all queries, cannot make it 0
 
-                left, right, val = queries[k]
+                # read k-th query
+                l, r, val = queries[k]
                 k += 1
-
+                
                 # if the query ends before curr idx, it is useless
                 # if the query start after curr idx, then it is useless now, but may be used later
-                if right < i: continue
+                if r < i: continue
 
-                # update prefix_sum with line sweeping algo (same as 3355. Zero Array Transformation I)
-                prefix_sum[max(left, i)] += val
-                prefix_sum[right+1] -= val
-            curr_sum += prefix_sum[i]
+                # apply the k-th query (line sweeping algo)
+                decr[max(l, i)] += val
+                if r < n-1: decr[r + 1] -= val
+            currMaxDecr += decr[i]
         
         return k
