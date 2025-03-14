@@ -1,16 +1,16 @@
 class Solution {
     public int maximumCandies(int[] candies, long k) {
-        int low = 0, high = Arrays.stream(candies).max().getAsInt();
+        int low = 0, high = 1 + Arrays.stream(candies).max().getAsInt();
 
         while(low < high){
-            var mid = low + (high - low + 1) / 2;
+            var mid = low + (high - low) / 2;
             if(canGive(candies, k, mid))
-                low = mid;
+                low = mid + 1;
             else 
-                high = mid - 1;
+                high = mid;
         }
 
-        return low;
+        return low - 1;
     }
 
     private boolean canGive(int[] candies, long k, int count){
