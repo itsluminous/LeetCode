@@ -1,16 +1,16 @@
 public class Solution {
     public int MaximumCandies(int[] candies, long k) {
-        int low = 0, high = candies.Max();
+        int low = 0, high = 1 + candies.Max();
 
         while(low < high){
-            var mid = low + (high - low + 1) / 2;
+            var mid = low + (high - low) / 2;
             if(CanGive(candies, k, mid))
-                low = mid;
+                low = mid + 1;
             else 
-                high = mid - 1;
+                high = mid;
         }
 
-        return low;
+        return low - 1;
     }
 
     private bool CanGive(int[] candies, long k, int count){
