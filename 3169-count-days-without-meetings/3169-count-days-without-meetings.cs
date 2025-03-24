@@ -1,31 +1,18 @@
 public class Solution {
     public int CountDays(int days, int[][] meetings) {
-        Array.Sort(meetings, (a, b) => a[0] - b[0]);
+        Array.Sort(meetings, (m1, m2) => m1[0] - m2[0]);
+        int freeDays = 0, prevEnd = 0;
 
-        var overlaping = new List<int[]>();
-        var curr = meetings[0];
-        overlaping.Add(curr);
-
-        foreach (var m in meetings) {
-            if (m[0] <= curr[1]) {
-                curr[1] = Math.Max(curr[1], m[1]);
-            } 
-            else {
-                curr = m;
-                overlaping.Add(curr);
-            }
+        // merge intervals, and track free days when new interval is started
+        foreach(var meeting in meetings){
+            int currStart = meeting[0], currEnd = meeting[1];
+            if(currStart > prevEnd)
+                freeDays += currStart - prevEnd - 1;
+            prevEnd = Math.Max(prevEnd, currEnd);
         }
 
-        var count = 0;
-        if (overlaping[0][0] > 1)
-            count += overlaping[0][0] - 1;
-
-        for (var i = 1; i < overlaping.Count; i++)
-            count += overlaping[i][0] - overlaping[i - 1][1] - 1;
-
-        if (overlaping[overlaping.Count - 1][1] < days)
-            count += days - overlaping[overlaping.Count - 1][1];
-
-        return count;
+        // include days we are free after last meeting
+        freeDays += days - prevEnd;
+        return freeDays;
     }
 }
