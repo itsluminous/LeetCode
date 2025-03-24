@@ -1,31 +1,21 @@
 class Solution {
     public int countDays(int days, int[][] meetings) {
-        Arrays.sort(meetings, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(meetings, (m1, m2) -> m1[0] - m2[0]);
+        
+        // initialize freeDays with number of days we are free before first meeting
+        var freeDays = meetings[0][0] - 1;
+        var prevEnd = meetings[0][1];
 
-        var overlaping = new ArrayList<int[]>();
-        var curr = meetings[0];
-        overlaping.add(curr);
-
-        for (var m : meetings) {
-            if (m[0] <= curr[1]) {
-                curr[1] = Math.max(curr[1], m[1]);
-            } 
-            else {
-                curr = m;
-                overlaping.add(curr);
-            }
+        // merge intervals, and track free days when new interval is started
+        for(var i=1; i<meetings.length; i++){
+            int currStart = meetings[i][0], currEnd = meetings[i][1];
+            if(currStart > prevEnd)
+                freeDays += currStart - prevEnd - 1;
+            prevEnd = Math.max(prevEnd, currEnd);
         }
 
-        var count = 0;
-        if (overlaping.get(0)[0] > 1)
-            count += overlaping.get(0)[0] - 1;
-
-        for (var i = 1; i < overlaping.size(); i++)
-            count += overlaping.get(i)[0] - overlaping.get(i - 1)[1] - 1;
-
-        if (overlaping.get(overlaping.size() - 1)[1] < days)
-            count += days - overlaping.get(overlaping.size() - 1)[1];
-
-        return count;
+        // include days we are free after last meeting
+        freeDays += days - prevEnd;
+        return freeDays;
     }
 }
