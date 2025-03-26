@@ -10,7 +10,7 @@ class Solution {
 
         // find median using quick select. all numbers will be converted to this value
         var mid = (m*n)/2;
-        var median = getMedian(nums, mid+1);
+        var median = getMedianQS(nums, mid+1);
 
         // try to convert every number to median
         var ops = 0;
@@ -24,7 +24,7 @@ class Solution {
     }
 
     // get median using quick select
-    private int getMedian(List<Integer> nums, int idx){
+    private int getMedianQS(List<Integer> nums, int idx){
         // pick random pivot to avoid worse case complexity in quick sort
         var rand = new Random();
         var pivot = nums.get(rand.nextInt(nums.size()));
@@ -37,8 +37,8 @@ class Solution {
         }
 
         int l = left.size(), m = mid.size(), r=right.size();
-        if(l >= idx) return getMedian(left, idx);
-        if(l + m < idx) return getMedian(right, idx-(l+m));
+        if(l >= idx) return getMedianQS(left, idx);
+        if(l + m < idx) return getMedianQS(right, idx-(l+m));
         return mid.get(0);  // all items in mid will have same value
     }
 
