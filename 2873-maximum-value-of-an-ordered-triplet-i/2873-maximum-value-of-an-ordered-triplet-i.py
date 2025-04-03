@@ -1,4 +1,21 @@
+# O(n) - without using extra space
 class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+
+        largestOnLeft = nums[0]   # nums[i]
+        biggestDiff = 0           # nums[i] - nums[j]
+        for k in range(1, n):
+            curr = nums[k]
+            ans = max(ans, biggestDiff * curr)                    # (nums[i] - nums[j]) * nums[k]
+            biggestDiff = max(biggestDiff, largestOnLeft - curr)  # in case of nums[j] = curr
+            largestOnLeft = max(largestOnLeft, curr)              # in case of nums[i] = curr
+
+        return ans
+
+# Accepted - O(n) - using extra array
+class SolutionArr:
     def maximumTripletValue(self, nums: List[int]) -> int:
         n = len(nums)
         ans = 0
