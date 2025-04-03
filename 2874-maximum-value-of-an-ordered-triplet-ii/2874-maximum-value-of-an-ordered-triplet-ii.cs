@@ -1,4 +1,24 @@
+// O(n) - without using extra space
 public class Solution {
+    public long MaximumTripletValue(int[] nums) {
+        var n = nums.Length;
+        long ans = 0;
+
+        long largestOnLeft = nums[0];   // nums[i]
+        long biggestDiff = 0;           // nums[i] - nums[j]
+        for(var k=1; k<n; k++){
+            var curr = nums[k];
+            ans = Math.Max(ans, biggestDiff * curr);                    // (nums[i] - nums[j]) * nums[k]
+            biggestDiff = Math.Max(biggestDiff, largestOnLeft - curr);  // in case of nums[j] = curr
+            largestOnLeft = Math.Max(largestOnLeft, curr);              // in case of nums[i] = curr
+        }
+
+        return ans;
+    }
+}
+
+// Accepted - O(n) - using extra array
+public class SolutionArr {
     public long MaximumTripletValue(int[] nums) {
         var n = nums.Length;
         long ans = 0;
