@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/sum-of-all-subset-xor-totals/?envType=daily-question&envId=2024-05-20">1863. Sum of All Subset XOR Totals</a></h2><h3>Easy</h3><hr><p>The <strong>XOR total</strong> of an array is defined as the bitwise <code>XOR</code> of<strong> all its elements</strong>, or <code>0</code> if the array is<strong> empty</strong>.</p>
+<h2><a href="https://leetcode.com/problems/sum-of-all-subset-xor-totals/">1863. Sum of All Subset XOR Totals</a></h2><h3>Easy</h3><hr><p>The <strong>XOR total</strong> of an array is defined as the bitwise <code>XOR</code> of<strong> all its elements</strong>, or <code>0</code> if the array is<strong> empty</strong>.</p>
 
 <ul>
 	<li>For example, the <strong>XOR total</strong> of the array <code>[2,5,6]</code> is <code>2 XOR 5 XOR 6 = 1</code>.</li>
