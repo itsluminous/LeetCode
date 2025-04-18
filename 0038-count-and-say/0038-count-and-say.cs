@@ -1,40 +1,20 @@
-// Recursive
 public class Solution {
     public string CountAndSay(int n) {
-        if(n == 1) return "1";
-        var str = CountAndSay(n-1);
-
-        var sb = new StringBuilder();
-        for(var i=str.Length-1; i>=0; ){
-            var ch = str[i];
-            var count = 0;
-            while(i >= 0 && str[i] == ch){
-                i--;
-                count++;
-            }
-            sb.Insert(0, count.ToString() + ch);
-        }
-        return sb.ToString();
-    }
-}
-
-// Accepted - Iteration
-public class SolutionIter {
-    public string CountAndSay(int n) {
-        var str = "1";
-        while(--n > 0){
-            var sb = new StringBuilder();
-            for(var i=str.Length-1; i>=0; ){
-                var ch = str[i];
-                var count = 0;
-                while(i >= 0 && str[i] == ch){
-                    i--;
+        var rle = "1";
+        while(n-- > 1){
+            var curr = new StringBuilder();
+            
+            for(var i=0; i<rle.Length; ){
+                var ch = rle[i];
+                var count = 1;
+                while(++i < rle.Length && rle[i] == ch)
                     count++;
-                }
-                sb.Insert(0, count.ToString() + ch);
+                curr.Append(count);
+                curr.Append(ch);
             }
-            str = sb.ToString();
+            rle = curr.ToString();
         }
-        return str;
+
+        return rle;
     }
 }
