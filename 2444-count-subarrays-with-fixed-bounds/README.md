@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/count-subarrays-with-fixed-bounds/">2444. Count Subarrays With Fixed Bounds</a></h2><h3>Hard</h3><hr><p>You are given an integer array <code>nums</code> and two integers <code>minK</code> and <code>maxK</code>.</p>
+<h2><a href="https://leetcode.com/problems/count-subarrays-with-fixed-bounds/?envType=daily-question&envId=2025-04-26">2444. Count Subarrays With Fixed Bounds</a></h2><h3>Hard</h3><hr><p>You are given an integer array <code>nums</code> and two integers <code>minK</code> and <code>maxK</code>.</p>
 
 <p>A <strong>fixed-bound subarray</strong> of <code>nums</code> is a subarray that satisfies the following conditions:</p>
 
