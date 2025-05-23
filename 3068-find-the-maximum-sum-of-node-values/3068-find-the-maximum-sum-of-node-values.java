@@ -37,3 +37,29 @@ class Solution {
         return dp[currIdx][isEven];
     }
 }
+
+// Accepted - O(n logn)
+// since (a ^ k) ^ k = a
+// so edges array is actually irrelevant.
+// we can pick any two nums and xor both of them, they don't have to be connected directly.
+class SolutionGreedy {
+    public long maximumValueSum(int[] nums, int k, int[][] edges) {
+        var n = nums.length;
+        long numSum = 0;
+        var xorDiff = new int[n];   // how much extra we get if we xor nums[i]
+        for(var i=0; i<n; i++){
+            numSum += nums[i];
+            xorDiff[i] = (nums[i] ^ k) - nums[i];  // negative value if xor gives smaller number
+        }
+
+        // include the index pairs with biggest diffs first
+        Arrays.sort(xorDiff);
+        for(var i=n-1; i>0; i-=2){
+            var pairSum = xorDiff[i] + xorDiff[i-1];
+            if(pairSum <= 0) break;
+            numSum += pairSum;
+        }
+
+        return numSum;
+    }
+}
