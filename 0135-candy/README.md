@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/candy/?envType=problem-list-v2&envId=5fj1osit">135. Candy</a></h2><h3>Hard</h3><hr><p>There are <code>n</code> children standing in a line. Each child is assigned a rating value given in the integer array <code>ratings</code>.</p>
+<h2><a href="https://leetcode.com/problems/candy/?envType=daily-question&envId=2025-06-02">135. Candy</a></h2><h3>Hard</h3><hr><p>There are <code>n</code> children standing in a line. Each child is assigned a rating value given in the integer array <code>ratings</code>.</p>
 
 <p>You are giving candies to these children subjected to the following requirements:</p>
 
