@@ -1,34 +1,33 @@
 class Solution {
     public String clearStars(String s) {
-        var chars = new ArrayList[26];  // list of indexes which have char i
-        var indexes = new HashSet<Integer>();   // list of indexes which have not been removed
-        for(var i=0; i<26; i++)
-            chars[i] = new ArrayList<Integer>();
+        var ss = s.toCharArray();
+        var n = ss.length;
+        var removed = new boolean[n];  // to track which indexes are removed from final ans
 
-        for(var i=0; i<s.length(); i++){
-            var ch = s.charAt(i);
-            if(ch == '*'){
-                for(var c=0; c<26; c++)
-                    if(chars[c].size() > 0){
-                        var idx = chars[c].get(chars[c].size() - 1);
-                        chars[c].remove(chars[c].size() - 1);
-                        indexes.remove(idx);
-                        break;
-                    }
-            }
-            else{
-                chars[ch-'a'].add(i);
-                indexes.add(i);
+        // pos will track which all indexes have characters 'a' to 'z'
+        Stack<Integer>[] pos = new Stack[26];
+        for(var i=0; i<26; i++) pos[i] = new Stack<Integer>();
+
+        for(var i=0; i<n; i++){
+            if(ss[i] != '*')
+                pos[ss[i] - 'a'].push(i);    // found non '*' char, so save its pos
+            else {
+                removed[i] = true;          // mark '*' as removed
+                // find out the smallest character that can be removed
+                for(var ch = 'a'; ch <= 'z'; ch++){
+                    if(pos[ch-'a'].isEmpty()) continue;
+                    var idx = pos[ch-'a'].pop();    // remove max idx of smallest character
+                    removed[idx] = true;
+                    break;
+                }
             }
         }
 
+        // any idx not marked for removal will be in ans
         var ans = new StringBuilder();
-        for(var i=0; i<s.length(); i++){
-            var ch = s.charAt(i);
-            if(indexes.contains(i))
-                ans.append(ch);
-        }
-
+        for(var i=0; i<n; i++)
+            if(!removed[i]) ans.append(ss[i]);
+        
         return ans.toString();
     }
 }
