@@ -1,34 +1,32 @@
 public class Solution {
     public string ClearStars(string s) {
-        var chars = new List<int>[26];  // list of indexes which have char i
-        var indexes = new HashSet<int>();   // list of indexes which have not been removed
-        for(var i=0; i<26; i++)
-            chars[i] = new List<int>();
+        var n = s.Length;
+        var removed = new bool[n];  // to track which indexes are removed from final ans
 
-        for(var i=0; i<s.Length; i++){
-            var ch = s[i];
-            if(ch == '*'){
-                for(var c=0; c<26; c++)
-                    if(chars[c].Count > 0){
-                        var idx = chars[c][chars[c].Count - 1];
-                        chars[c].RemoveAt(chars[c].Count - 1);
-                        indexes.Remove(idx);
-                        break;
-                    }
-            }
-            else{
-                chars[ch-'a'].Add(i);
-                indexes.Add(i);
+        // pos will track which all indexes have characters 'a' to 'z'
+        var pos = new Stack<int>[26];
+        for(var i=0; i<26; i++) pos[i] = new Stack<int>();
+
+        for(var i=0; i<n; i++){
+            if(s[i] != '*')
+                pos[s[i] - 'a'].Push(i);    // found non '*' char, so save its pos
+            else {
+                removed[i] = true;          // mark '*' as removed
+                // find out the smallest character that can be removed
+                for(var ch = 'a'; ch <= 'z'; ch++){
+                    if(pos[ch-'a'].Count == 0) continue;
+                    var idx = pos[ch-'a'].Pop();    // remove max idx of smallest character
+                    removed[idx] = true;
+                    break;
+                }
             }
         }
 
+        // any idx not marked for removal will be in ans
         var ans = new StringBuilder();
-        for(var i=0; i<s.Length; i++){
-            var ch = s[i];
-            if(indexes.Contains(i))
-                ans.Append(ch);
-        }
-
+        for(var i=0; i<n; i++)
+            if(!removed[i]) ans.Append(s[i]);
+        
         return ans.ToString();
     }
 }
