@@ -2,6 +2,26 @@ class Solution {
     List<Integer> ans = new ArrayList<>();
 
     public List<Integer> lexicalOrder(int n) {
+        helper(0, n);
+        return ans;
+    }
+
+    private void helper(int seed, int max){
+        seed *= 10;
+        for(var i=0; i<10; i++){
+            if(seed + i == 0) continue;
+            if(seed + i > max) break;
+            ans.add(seed + i);
+            helper(seed + i, max);
+        }
+    }
+}
+
+// Accepted
+class SolutionAlt {
+    List<Integer> ans = new ArrayList<>();
+
+    public List<Integer> lexicalOrder(int n) {
         lexicalOrder(n, 1);
         return ans;
     }
