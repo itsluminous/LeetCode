@@ -1,18 +1,26 @@
 class Solution:
     def maxDistance(self, s: str, k: int) -> int:
-        count = [0] * 100
-        maxdist = 0
-        for i in range(0, len(s)):
-            count[ord(s[i])] += 1
-            oppositeDirs = min(count[ord('N')], count[ord('S')]) + min(count[ord('E')], count[ord('W')])
-            # no. of dir changes = (i+1), and we can at most revert oppositeDirs moves in this
-            # each dir removal have double impact on manhattan distance, hence * 2
-            dist = i + 1 - (2 * oppositeDirs)
-            # reverting oppositeDirs moves will also add same moves on opposite direction
-            # hence multiply by 2
-            # but we can only revert max of k moves
-            dist += 2 * min(k, oppositeDirs)
-            maxdist = max(maxdist, dist)
-        
-        return maxdist
-            
+        max_dist = 0
+        direction_map = {
+            'N': (0, 1),
+            'S': (0, -1),
+            'E': (1, 0),
+            'W': (-1, 0)
+        }
+
+        x = y = 0  # track cumulative x and y movement
+        for i, dir in enumerate(s):
+            dx, dy = direction_map[dir]
+            x += dx
+            y += dy
+
+            # calculate manhattan distance without changing anything
+            curr_dist = abs(x) + abs(y)
+
+            # if i <= k then all dirs can be pointed to one diagonal, so max_dist = i+1
+            # if i > k, then we can change k directions only.
+            # Each change will have double impact, because it removes one wrong dir and adds one right dir
+            curr_dist = min(i + 1, curr_dist + 2 * k)
+            max_dist = max(max_dist, curr_dist)
+
+        return max_dist
