@@ -1,20 +1,24 @@
 class Solution {
     public int maxDistance(String s, int k) {
-        var count = new int[100];
-        var maxdist = 0;
+        var maxDist = 0;
+        var directionMap = Map.of('N', new int[]{0, 1}, 'S', new int[]{0, -1}, 'E', new int[]{1, 0}, 'W', new int[]{-1, 0});
+        
+        int x = 0, y = 0;   // track cumulative x and y movement
         for(var i=0; i<s.length(); i++){
-            count[s.charAt(i)]++;
-            var oppositeDirs = Math. min(count['N'], count['S']) + Math.min(count['E'], count['W']);
-            // no. of dir changes = (i+1), and we can at most revert oppositeDirs moves in this
-            // each dir removal have double impact on manhattan distance, hence * 2
-            var dist = i + 1 - (2 * oppositeDirs);
-            // reverting oppositeDirs moves will also add same moves on opposite direction
-            // hence multiply by 2
-            // but we can only revert max of k moves
-            dist += 2 * Math.min(k, oppositeDirs);
-            maxdist = Math.max(maxdist, dist);
+            var change = directionMap.get(s.charAt(i));
+            x += change[0];
+            y += change[1];
+
+            // calculate manhattan distance without changing anything
+            var currDist = Math.abs(x) + Math.abs(y);
+
+            // if i <= k then all dirs can be pointed to one diagonal, so maxDist = i+1
+            // if i > k, then we can change k directions only. 
+            // Each change will have double impact, because it removes one wrong dir and adds one right dir
+            currDist = Math.min(i+1, currDist + 2 * k);
+            maxDist = Math.max(maxDist, currDist);
         }
         
-        return maxdist;
+        return maxDist;
     }
 }
