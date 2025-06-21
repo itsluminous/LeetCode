@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/minimum-deletions-to-make-string-k-special">3085. Minimum Deletions to Make String K-Special</a></h2><h3>Medium</h3><hr><p>You are given a string <code>word</code> and an integer <code>k</code>.</p>
+<h2><a href="https://leetcode.com/problems/minimum-deletions-to-make-string-k-special/?envType=daily-question&envId=2025-06-21">3085. Minimum Deletions to Make String K-Special</a></h2><h3>Medium</h3><hr><p>You are given a string <code>word</code> and an integer <code>k</code>.</p>
 
 <p>We consider <code>word</code> to be <strong>k-special</strong> if <code>|freq(word[i]) - freq(word[j])| &lt;= k</code> for all indices <code>i</code> and <code>j</code> in the string.</p>
 
