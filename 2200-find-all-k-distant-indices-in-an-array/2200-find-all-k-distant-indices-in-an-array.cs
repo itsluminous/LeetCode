@@ -1,27 +1,24 @@
 public class Solution {
     public IList<int> FindKDistantIndices(int[] nums, int key, int k) {
         var n = nums.Length;
-        var keyIdx = new List<int>();
+        var keyIndices = new List<int>();
+        for(var i=0; i<n; i++)
+            if(nums[i] == key)
+                keyIndices.Add(i);
         
-        // find all indexes of key
-        for(var i=0; i<n; i++){
-            if(nums[i] == key) keyIdx.Add(i);
-        }
-        
-        // fins all K-Distant indices
-        var result = new List<int>();
-        for(int i=0, jIdx=0; i<n; i++){
-            var j = keyIdx[jIdx]; 
-            if(Math.Abs(i-j) <= k)
-                result.Add(i);
-            else if(jIdx < keyIdx.Count - 1 && Math.Abs(i-keyIdx[jIdx+1]) <= k){
-                result.Add(i);
+        var ans = new List<int>();
+        for(int i=0, ki=0; i<n && ki<keyIndices.Count; i++){
+            // if the key is outside k range, look for next key
+            if(keyIndices[ki] < i && i - keyIndices[ki] > k){
+                ki++;
+                i--;
+                continue;
             }
-            
-            if(i-j >= k && jIdx < keyIdx.Count - 1)
-                jIdx++;
+            // if the key is in k range, add curr idx to ans
+            if(keyIndices[ki] - i <= k)
+                ans.Add(i);
         }
-        
-        return result;
+
+        return ans;
     }
 }
