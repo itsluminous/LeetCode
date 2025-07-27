@@ -1,23 +1,21 @@
 public class Solution {
     public int CountHillValley(int[] nums) {
-        var n = nums.Length;  
-        var dir = 0;    // direction = 1 means up, -1 means down
-        var count = 0;
-        
-        if(nums[1] > nums[0]) dir = 1;
-        else if(nums[1] < nums[0]) dir = -1;
-        
-        for(var i=2; i<n; i++){
-            if(nums[i] > nums[i-1]){
-                if(dir == -1) count++;  // valley found
-                dir = 1;
-            }
-            else if(nums[i] < nums[i-1]){
-                if(dir == 1) count++;   // hill found
-                dir = -1;
-            }
+        int n = nums.Length, ans = 0, start = 1;
+
+        // skip all initial equal numbers
+        while(start < n && nums[start] == nums[start-1]) start++;
+        if(start == n) return 0;
+
+        // find all maxima and minima
+        var dir = nums[start] > nums[start-1] ? 1 : -1;    // 1 = up, -1 = down
+        for(var i=start+1; i<n; i++){
+            if(nums[i] == nums[i-1]) continue;  // equal neighbour
+            
+            var newDir = nums[i] > nums[i-1] ? 1 : -1;
+            if(newDir != dir) ans++;    // found maxima or minima
+            dir = newDir;
         }
-        
-        return count;
+
+        return ans;
     }
 }
