@@ -1,0 +1,32 @@
+// 3^19 is last number less than 2^31, so we don't have to check beyond that
+// 3^19 = 3^x * 3^(19-x)
+// if n is power of 3, then 3^19 = k * n
+// since 3 is prime, k and n both should be power of 3, so they should be 3^x & 3^(19-x)
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        if(n < 0) return false;
+        return (Math.pow(3, 19) % n) == 0;
+    }
+}
+
+// Accepted - O(20)
+class Solution1 {
+    public boolean isPowerOfThree(int n) {
+        if(n < 0) return false;
+        while (n % 3 == 0)  n /= 3;
+        return n == 1;
+    }
+}
+
+// Accepted - O(20)
+class Solution2 {
+    public boolean isPowerOfThree(int n) {
+        if(n < 0) return false;
+        for(var p=0; p<20; p++){
+            var num = Math.pow(3, p);
+            if(num > n) break;
+            if(num == n) return true;
+        }
+        return false;
+    }
+}
