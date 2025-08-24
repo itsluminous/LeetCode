@@ -1,20 +1,12 @@
-public class Solution {
+class Solution {
     public int longestSubarray(int[] nums) {
-        int n = nums.length, k = 1, l = 0, r = 0, z = 0, max = 0;
-        for(; r<n; r++){
-            if(nums[r] == 1) continue;
-            if(nums[r] == 0 && z < k){
-                z++;
-                continue;
-            }
-
-            // if nums[r] == 0 && z == k
-            max = Math.max(max, r-l-k);
-            if(nums[l] == 0 && z != 0) z--;
-            l++; 
-            if(r >= l) r--;
+        int l = 0, maxLen = 0, zero = 0;
+        for(var r=0; r<nums.length; r++){
+            zero += 1-nums[r];  // if curr nums[r] == 0, increment count
+            while(zero > 1)
+                zero -= 1 - nums[l++];
+            maxLen = Math.max(maxLen, r-l);
         }
-
-        return Math.max(max, (r-l-k));
+        return maxLen;
     }
 }
