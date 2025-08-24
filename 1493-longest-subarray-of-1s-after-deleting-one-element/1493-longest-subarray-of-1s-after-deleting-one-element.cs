@@ -1,20 +1,12 @@
 public class Solution {
     public int LongestSubarray(int[] nums) {
-        int n = nums.Length, k = 1, l = 0, r = 0, z = 0, max = 0;
-        for(; r<n; r++){
-            if(nums[r] == 1) continue;
-            if(nums[r] == 0 && z < k){
-                z++;
-                continue;
-            }
-
-            // if nums[r] == 0 && z == k
-            max = Math.Max(max, r-l-k);
-            if(nums[l] == 0 && z != 0) z--;
-            l++; 
-            if(r >= l) r--;
+        int l = 0, maxLen = 0, zero = 0;
+        for(var r=0; r<nums.Length; r++){
+            zero += 1-nums[r];  // if curr nums[r] == 0, increment count
+            while(zero > 1)
+                zero -= 1 - nums[l++];
+            maxLen = Math.Max(maxLen, r-l);
         }
-
-        return Math.Max(max, (r-l-k));
+        return maxLen;
     }
 }
