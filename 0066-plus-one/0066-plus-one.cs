@@ -1,18 +1,17 @@
 public class Solution {
     public int[] PlusOne(int[] digits) {
-        var carry = 1;
-        for(var i=digits.Length-1; i>=0; i--){
-            if(carry == 0) return digits;
-            var num = digits[i] + carry;
-            digits[i] = num % 10;
-            carry = num / 10;
+        var n = digits.Length;
+        for(var i=n-1; i>=0; i--){
+            if(digits[i] < 9){
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
         }
-        
-        if(carry == 0) return digits;
 
-        var ans = new int[digits.Length + 1];
-        Array.Copy(digits, 0, ans, 1, digits.Length);
-        ans[0] = carry;
+        // handle case where extra digit needs to be added
+        var ans = new int[n+1];
+        ans[0] = 1;
         return ans;
     }
 }
