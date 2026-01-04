@@ -12,7 +12,7 @@ class Solution {
 
         int ans = 0, maxTillNow = 0;
         for(var time : times){
-            if(time[1] == 1)
+            if(time[1] == 1)    // start event
                 // if we found a start array, then check if this + prev max is max ans
                 ans = Math.max(ans, maxTillNow + time[2]);
             else
