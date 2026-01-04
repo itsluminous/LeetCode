@@ -1,12 +1,13 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        carry = 1
-        for i in range(len(digits)-1, -1, -1):
-            if carry == 0: return digits
-            num = digits[i] + carry
-            digits[i] = num % 10
-            carry = num // 10
-        
-        if carry == 1:
-            return [1] + digits
-        return digits
+        n = len(digits)
+        for i in range(n-1, -1, -1):
+            if digits[i] < 9:
+                digits[i] += 1
+                return digits
+            digits[i] = 0
+
+        # handle case where extra digit needs to be added
+        ans = [0] * (n+1)
+        ans[0] = 1
+        return ans
