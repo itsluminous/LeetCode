@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/maximal-rectangle/">85. Maximal Rectangle</a></h2><h3>Hard</h3><hr><p>Given a <code>rows x cols</code>&nbsp;binary <code>matrix</code> filled with <code>0</code>&#39;s and <code>1</code>&#39;s, find the largest rectangle containing only <code>1</code>&#39;s and return <em>its area</em>.</p>
+<h2><a href="https://leetcode.com/problems/maximal-rectangle/?envType=daily-question&envId=2026-01-11">85. Maximal Rectangle</a></h2><h3>Hard</h3><hr><p>Given a <code>rows x cols</code>&nbsp;binary <code>matrix</code> filled with <code>0</code>&#39;s and <code>1</code>&#39;s, find the largest rectangle containing only <code>1</code>&#39;s and return <em>its area</em>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
@@ -29,6 +29,6 @@
 <ul>
 	<li><code>rows == matrix.length</code></li>
 	<li><code>cols == matrix[i].length</code></li>
-	<li><code>1 &lt;= row, cols &lt;= 200</code></li>
+	<li><code>1 &lt;= rows, cols &lt;= 200</code></li>
 	<li><code>matrix[i][j]</code> is <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>
 </ul>
