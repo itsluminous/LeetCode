@@ -1,30 +1,33 @@
-public class Solution {
+class Solution {
     public int pairSum(ListNode head) {
-        // find mid
-        ListNode slow = head, fast = head.next;
+        var firstHalf = new Stack<Integer>();
+        ListNode slow = head, fast = head;
+
+        // reach half point
         while(fast != null && fast.next != null){
+            firstHalf.push(slow.val);
+            slow = slow.next;
             fast = fast.next.next;
+        }
+
+        // find max
+        var ans = 0;
+        while(slow != null){
+            ans = Math.max(ans, slow.val + firstHalf.pop());
             slow = slow.next;
         }
 
-        var mid = slow.next;
-        
-        // save all numbers till mid in stack
-        var stack = new Stack<Integer>();
-        var curr = head;
-        do{
-            stack.push(curr.val);
-            curr = curr.next;
-        }while(curr != mid);
-
-        // get twin sum for all numbers and update max
-        var maxSum = 0;
-        do{
-            var sum = curr.val + stack.pop();
-            maxSum = Math.max(maxSum, sum);
-            curr = curr.next;
-        }while(curr != null);
-
-        return maxSum;
+        return ans;
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
