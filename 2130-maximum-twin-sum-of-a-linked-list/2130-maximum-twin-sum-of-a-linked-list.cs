@@ -1,30 +1,35 @@
+
 public class Solution {
     public int PairSum(ListNode head) {
-        // find mid
-        ListNode slow = head, fast = head.next;
+        var firstHalf = new Stack<int>();
+        ListNode slow = head, fast = head;
+
+        // reach half point
         while(fast != null && fast.next != null){
+            firstHalf.Push(slow.val);
+            slow = slow.next;
             fast = fast.next.next;
+        }
+
+        // find max
+        var ans = 0;
+        while(slow != null){
+            ans = Math.Max(ans, slow.val + firstHalf.Pop());
             slow = slow.next;
         }
 
-        var mid = slow.next;
-        
-        // save all numbers till mid in stack
-        var stack = new Stack<int>();
-        var curr = head;
-        do{
-            stack.Push(curr.val);
-            curr = curr.next;
-        }while(curr != mid);
-
-        // get twin sum for all numbers and update max
-        var maxSum = 0;
-        do{
-            var sum = curr.val + stack.Pop();
-            maxSum = Math.Max(maxSum, sum);
-            curr = curr.next;
-        }while(curr != null);
-
-        return maxSum;
+        return ans;
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
